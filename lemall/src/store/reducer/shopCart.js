@@ -49,7 +49,9 @@ function shopCart(state=INIT_STATE,action) {
                     return parseFloat(item.id) === mode;
                 });
                 console.log(item);
-
+                if(!item){
+                    break;
+                }
                 item.check = !item.check;
                 //=>注意:验证是否所有的课程都是选中的，如果是全选也要选中
                 let f = state.shopCart.unpay.find(item => {

@@ -1,4 +1,5 @@
 import React from 'react'
+//import '../../static/css/television.less'
 import {Icon} from 'antd'
 
 export default class Maintain extends React.Component {
@@ -21,13 +22,12 @@ export default class Maintain extends React.Component {
             </div>
             <div className={'conBox'}>
                 <div className={'con'}>
-                   <Icon type={'tool'}  style={{fontSize: '100px',color:'red'}}/>
+                    <Icon type={'tool'}  style={{fontSize: '70px',color:'red'}}/>
                     <p>您还没有预约过上门安装维修</p>
                     <p>乐视 • TV超级电视</p>
                 </div>
                 <p className={'footer'}>立即预约</p>
             </div>
-
         </div>
     }
 }

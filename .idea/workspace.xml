@@ -2,14 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8607d081-1448-4462-a734-961ac2aed416" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lemall/src/api/shopCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/api/shopCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall-SERVER/json/personal.json" beforeDir="false" afterPath="$PROJECT_DIR$/lemall-SERVER/json/personal.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall-SERVER/json/shopping.json" beforeDir="false" afterPath="$PROJECT_DIR$/lemall-SERVER/json/shopping.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall-SERVER/json/store.json" beforeDir="false" afterPath="$PROJECT_DIR$/lemall-SERVER/json/store.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/api/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/api/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/json/huiyuan.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/json/television.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lemall/src/routes/Detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/Detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lemall/src/routes/Detail/linkage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/routes/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lemall/src/routes/ShopCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/ShopCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/routes/home/Letv.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/home/Letv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/routes/home/Maintain.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/home/Maintain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/routes/home/Television.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/home/Television.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/routes/home/VIP.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/home/VIP.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/routes/personal/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/personal/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/routes/personal/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/routes/personal/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/static/css/personal.less" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/static/css/personal.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/static/css/television.less" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/static/css/television.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/static/json/detail.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lemall/src/store/action-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/store/action-types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lemall/src/store/action/shopCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/store/action/shopCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/store/action/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/store/action/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemall/src/store/reducer/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/store/reducer/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lemall/src/store/reducer/shopCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/lemall/src/store/reducer/shopCart.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,11 +38,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lemall/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="469">
+              <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -35,48 +51,85 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lemall/src/api/detail.js">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lemall/src/routes/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Hot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Hot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-450">
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Nav.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Nav.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Television.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Television.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1729">
+              <caret line="90" column="25" lean-forward="true" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lemall/src/static/css/home.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+              <folding>
+                <element signature="e#50#1474#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lemall/src/routes/personal/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="Detail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lemall/src/routes/Detail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="9" column="47" lean-forward="true" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+            <state relative-caret-position="305">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="n#!!block;n#constructor#0;n#Detail#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="action-types.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lemall/src/store/action-types.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lemall/src/api/home.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lemall/src/api/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,8 +143,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lemall/src/routes/Detail.js" />
         <option value="$PROJECT_DIR$/lemall/src/store/action-types.js" />
+        <option value="$PROJECT_DIR$/lemall/src/static/css/home.less" />
+        <option value="$PROJECT_DIR$/lemall/src/routes/ShopCart.js" />
+        <option value="$PROJECT_DIR$/lemall/src/store/reducer/shopCart.js" />
+        <option value="$PROJECT_DIR$/lemall-SERVER/json/shopping.json" />
+        <option value="$PROJECT_DIR$/lemall/src/routes/personal/user.js" />
+        <option value="$PROJECT_DIR$/lemall-SERVER/json/store.json" />
+        <option value="$PROJECT_DIR$/lemall/src/static/css/personal.less" />
+        <option value="$PROJECT_DIR$/lemall/src/routes/personal/order.js" />
+        <option value="$PROJECT_DIR$/lemall/src/routes/Detail.js" />
+        <option value="$PROJECT_DIR$/lemall/src/index.js" />
+        <option value="$PROJECT_DIR$/lemall/src/routes/home/Television.js" />
+        <option value="$PROJECT_DIR$/lemall/src/routes/home/Nav.js" />
+        <option value="$PROJECT_DIR$/lemall/src/routes/Home.js" />
       </list>
     </option>
   </component>
@@ -117,9 +182,9 @@
       <path value="$PROJECT_DIR$/lemall/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="10" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
@@ -153,7 +218,61 @@
               <item name="lemall2" type="462c0819:PsiDirectoryNode" />
               <item name="lemall" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="Detail" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="personal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="select" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
@@ -177,6 +296,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
               <item name="reducer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall-SERVER" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lemall2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lemall2" type="462c0819:PsiDirectoryNode" />
+              <item name="lemall-SERVER" type="462c0819:PsiDirectoryNode" />
+              <item name="json" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -217,20 +347,22 @@
       <workItem from="1530871520449" duration="309000" />
       <workItem from="1530871847783" duration="94000" />
       <workItem from="1530872227334" duration="1772000" />
+      <workItem from="1530874940766" duration="12366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2175000" />
+    <option name="totallyTimeSpent" value="14541000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="10" width="1386" height="788" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24851632" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19866072" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32969034" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32843137" />
@@ -261,32 +393,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lemall/src/api/home.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lemall/src/api/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lemall/src/api/detail.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lemall/src/store/action/detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lemall/src/store/reducer/detail.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/lemall/src/routes/Detail.js">
@@ -300,12 +407,282 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/api/home.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lemall/src/store/action-types.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
+        <state relative-caret-position="990">
           <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/store/action/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/api/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/ShopCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/store/action-types.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Banner1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/store/reducer/shopCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Banner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall-SERVER/json/shopping.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/store/reducer/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/store/reducer/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall-SERVER/json/store.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret column="1452" lean-forward="true" selection-start-column="1452" selection-end-column="1452" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/static/css/personal.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-101">
+          <caret line="573" column="36" selection-start-line="573" selection-start-column="36" selection-end-line="573" selection-end-column="36" />
+          <folding>
+            <element signature="e#43#2664#0" />
+            <element signature="e#2679#4556#0" />
+            <element signature="e#4568#8971#0" />
+            <element signature="e#9038#9510#0" />
+            <element signature="e#9520#10026#0" />
+            <element signature="e#10053#10686#0" />
+            <element signature="e#10804#11234#0" />
+            <element signature="e#11375#11587#0" />
+            <element signature="e#11610#11828#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/store/action/shopCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/api/shopCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/personal/order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#2665#3429#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/personal/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3575">
+          <caret line="180" column="69" selection-start-line="180" selection-start-column="69" selection-end-line="180" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/api/detail.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/Personal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/personal/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/Detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#Detail#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Television.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1729">
+          <caret line="90" column="25" lean-forward="true" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/static/css/home.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+          <folding>
+            <element signature="e#50#1474#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Hot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/home/Nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lemall/src/routes/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

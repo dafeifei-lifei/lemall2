@@ -178,4 +178,4 @@ class User extends React.Component {
     }
 }
 
-export default connect(state => ({...state.personal}), action.personal)(User);
+export default connect(state => ({...state.personal,...state.shopCart}), action.personal)(User);

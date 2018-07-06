@@ -1,6 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import television from '../../json/television'
+import {Icon} from 'antd'
 
 export default class VIP extends React.Component {
     constructor(props, context) {
@@ -10,14 +9,21 @@ export default class VIP extends React.Component {
 
     render() {
         return <div className={'VIPBox'}>
+            <div className={'titleName clearfix'}>
+                <span><Icon type={'left'} /></span>
+                <h1>乐视会员购买</h1>
+                <span><Icon type={'ellipsis'}/></span>
+            </div>
             <div className={'VIPTitle'}>
                 <img src="https://img1-lemall.letvimg.com/file/20161018/default/2873083648179928" alt=""/>
                 <img src="https://img1-lemall.letvimg.com/wap/20160323/default/5377119576906302" alt=""/>
             </div>
             <div className="VIPCont">
                 <div className={'title'}>
+                    <img src="https://img2-lemall.letvimg.com/wap/20160325/default/5564993697341155" alt=""/>
                     <h3>超级影视会员</h3>
                     <p>适用于乐视超级电视、智能家庭中心 屏霸、乐视盒子、手机、电脑、平板电脑</p>
+                    <span><i></i>立即开通</span>
                 </div>
                 <div className={'price'}>
                     <ul className={'clearfix'}>
@@ -36,7 +42,8 @@ export default class VIP extends React.Component {
                     </ul>
                 </div>
                 <div className={'VIPeEquity'}>
-                    <h3>会员权益</h3>
+                    <h3>--- 会员权益 ---</h3>
+                    <span>了解详情</span>
                     <ul className={'clearfix'}>
                         <li>
                             <img src="https://img1-lemall.letvimg.com/wap/20160325/default/5559262053870908" alt=""/>
@@ -61,7 +68,7 @@ export default class VIP extends React.Component {
                     </ul>
                 </div>
                 <div className={'poster'}>
-                    <h3>乐视影视会员专享</h3>
+                    <h3>--乐视影视会员专享--</h3>
                     <ul className={'clearfix'}>
                         <li>
                             <img src="https://img1-lemall.letvimg.com//wap/20170512/default/17621406245247368" alt=""/>
@@ -74,6 +81,18 @@ export default class VIP extends React.Component {
                         <li>
                             <img src="https://img2-lemall.letvimg.com//wap/20170704/default/1814844778596446" alt=""/>
                             <p>复合大师</p>
+                        </li>
+                        <li>
+                            <img src="https://img0-lemall.letvimg.com//wap/20170522/default/18506383829249201" alt=""/>
+                            <p>长城</p>
+                        </li>
+                        <li>
+                            <img src="https://img1-lemall.letvimg.com//wap/20170623/default/884308387280896" alt=""/>
+                            <p>特工皇妃楚乔传</p>
+                        </li>
+                        <li>
+                            <img src="https://img2-lemall.letvimg.com//wap/20170623/default/884160520186869" alt=""/>
+                            <p>呼啸而过的青春</p>
                         </li>
                         <li>
                             <img src="https://img0-lemall.letvimg.com//wap/20170522/default/18506383829249201" alt=""/>

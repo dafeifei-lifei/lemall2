@@ -69,7 +69,7 @@ class ShopCart extends React.Component {
             <div className={"shopFooter"}>
                  <div className="shopFooter-left">
                      <input type={"checkbox"} id={"iptAll"} checked={this.props.selectAll} />
-                     <label htmlFor={"iptAll"} onChange={this.props.handleSelect.bind(this,"all")}><Icon type={"check"} /></label>
+                     <label htmlFor={"iptAll"} onClick={this.props.handleSelect.bind(this,"all")}><Icon type={"check"} /></label>
                      <span >全选</span>
                  </div>
                 <div className="shopFooter-mid clearfix">

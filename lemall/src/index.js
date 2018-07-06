@@ -33,13 +33,13 @@ ReactDOM.render(
                     {/*配路由*/}
                     <main className="container">
                         <Switch>
-                            <Route path="/home" component={Home}/>
+                            <Route path="/home" exact component={Home}/>
                             <Route path="/select" component={Select}/>
                             <Route path="/shopCart" component={ShopCart}/>
                             <Route path="/personal" component={Personal}/>
                             <Route path="/detail" component={Detail}/>
-                            <Route push="/navSearch" exact component={NavSearch}/>
-                            <Redirect from="/" to="/home"/>
+                            {/*<Route push="/navSearch" exact component={NavSearch}/>*/}
+                            {/*<Redirect from="/" to="/home"/>*/}
                         </Switch>
                     </main>
                     {/*NavBottom*/}
