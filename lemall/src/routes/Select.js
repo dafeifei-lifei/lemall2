@@ -41,7 +41,7 @@ class Common extends React.Component {
                 <header>
                     <Link to={'/navSearch'}>
                         <Icon type={'left'} style={{fontSize: '.4rem', marginLeft: '.2rem'}} onClick={()=>{
-                            this.props.history.go(-1)
+                            this.props.history.push('/home')
                         }}/>
                         <Search placeholder="X55L" style={{width: '5rem', margin: '.2rem .5rem'}}></Search>
                         <Icon type={'ellipsis'} style={{fontSize: '.4rem'}}/>
