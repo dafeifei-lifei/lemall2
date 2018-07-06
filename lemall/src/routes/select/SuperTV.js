@@ -22,6 +22,8 @@ class Select extends React.Component {
             obj.push(attr);
         }
         let x = data[0]['超级电视'][0];
+
+
         return <section className={'supertvBox'}>
             {/*右边导航*/}
             <div className={'sou_r '}>
@@ -61,6 +63,7 @@ class Select extends React.Component {
 
         </section>
     }
+
 }
 
 export default connect(state=>state.select,action.select)(Select);

@@ -15,6 +15,9 @@
     border-bottom: .02rem solid #d3d3d3;
     width: 100%;
     z-index: 999;
+    a{
+      color:#333333 ;
+    }
   }
 
   .souBox {
@@ -22,24 +25,30 @@
     height: 100%;
 
     .sou_l {
+      z-index: 9999;
       position: fixed;
       left: 0;
       top:1.05rem;
-      width: 30%;
+      width: 25%;
       height: 100%;
-      padding: 0 .1rem;
       background: #f2f2f2;
-      border-right: .02rem solid #d3d3d3;
+
 
       li {
         height: 1rem;
         line-height: 1rem;
         text-align: center;
-        font-size: .3rem;
+        font-size: .26rem;
+        padding: 0 .1rem;
         border-bottom: .01rem solid #d3d3d3;
+        border-right: .01rem solid #d3d3d3;
+        a{
+          color: #333333;
+        }
 
         &.active {
           background: #fff;
+          border-right:.01rem solid #fff;
         }
       }
     }
@@ -49,9 +58,10 @@
     position: absolute;
     right: 0;
     top: 1.05rem;
-    width: 70%;
+    width: 75%;
     height: 100%;
     background: #fff;
+
 
     .sou_r_top {
       padding:.2rem .2rem 0;
@@ -131,7 +141,7 @@
     position: absolute;
     right: 0;
     top: 1.05rem;
-    width: 70%;
+    width: 75%;
     box-sizing: border-box;
     display: flex;
     flex: 1;
@@ -168,7 +178,7 @@
     }
   }
   .partsBox {
-    width: 70%;
+    width: 75%;
     position: absolute;
     right: 0;
     top: 1.05rem;
@@ -208,7 +218,7 @@
     }
   }
   .levipBox {
-    width: 70%;
+    width: 75%;
     position: absolute;
     right: 0;
     top: 1.05rem;
