@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+<script>
+    axios.defaults.baseURL = 'http://localhost:8000';
+    axios.interceptors.response.use(result => result.data);//增加响应拦截器，在所有axios请求成功后，把获取的结果中data单独返回(data就是服务器返回的JSON数据)
+    axios.defaults.withCredentials = true; 
+    axios.defaults.transformRequest = data => {
+        //=>基于这个请求拦截器可以把post和put等传递给服务器的请求主体内容进行格式化处理，data就是配置的请求主体对象
+        let str = ``;
+        if (data && typeof data === 'object') {
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    str += `${key}=${data[key]}&`;
+                }
+            }
+            data = str.substring(0, str.length - 1);
+        }
+        return data;
+    };
+
+
+    //轮播图请求模拟
+//    axios.get('/shopping/banner').then(result => {
+//        console.log(result);
+//
+//    });
+
+//    axios.post('/store/add',{idlx:"hotSale",id:1
+//    }).then(result => {
+//        console.log(result);
+//
+//    });
+
+//    axios.post('/store/remove',{idlx:"hotSale",id:1
+//    }).then(result => {
+//        console.log(result);
+//
+//    });
+
+//    axios.get('/store/info',{state:3
+//    }).then(result => {
+//        console.log(result);
+//
+//    });
+
+//    axios.post('/personal/register',{name:"wyy",password:"123","phone":"2342",email:"xxx"}).then(result => {
+//        console.log(result);
+//
+//    });
+
+    axios.put('/personal/info').then(result => {
+        console.log(result);
+
+    });
+
+    
+</script>
+</html>

@@ -1,0 +1,47 @@
+[
+  {
+    "idlx": "list",
+    "id": 1,
+    "name": "X40N",
+    "smallpic": "https://img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647453308.jpg",
+    "bigpic": [
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648338089.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648344831.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648350867.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648361063.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648364797.jpg"
+    ],
+    "price": 2239.00,
+    "dec": "SDR转HDR|16G大存储|Mstar四核处理器"
+  },
+  {
+    "idlx": "list",
+    "id": 2,
+    "name": "X43L",
+    "smallpic": "https://img2-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647837847.jpg",
+    "bigpic": [
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647837847.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647848200.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647859720.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647868854.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647878356.jpg"
+    ],
+    "price": 1899.00,
+    "dec": "极色炫彩引擎|16G大存储|Mstar四核处理器"
+  },
+  {
+    "idlx": "list",
+    "id":3,
+    "name": "X55L",
+    "smallpic": "https://img1-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648027217.jpg",
+    "bigpic": [
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648027217.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648057765.jpg",
+      "////img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648177725.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648183053.jpg",
+      "//img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513648186829.jpg"
+    ],
+    "price": 2794.00,
+    "dec": "Mater|16G大存储|4K HDR超高清"
+  }
+]

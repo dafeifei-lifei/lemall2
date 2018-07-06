@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>乐视商城_乐视超级手机,超级电视,乐视网会员官方销售平台-乐视商城</title>
+  </head>
+  <body>
+  <script>
+      (function anonymous() {
+          function computed() {
+              let HTML = document.documentElement,
+                  winW = HTML.clientWidth,
+                  desW = 750;
+              if (winW >= desW) {
+                  HTML.style.fontSize = "100px";
+              }
+              HTML.style.fontSize = winW / desW * 100 + "px";//=>HTML中单独编写的代码尽量不要出现{}等操作，例如:ES6模板字符串，否则webpack编译失败
+          }
+          computed();
+          window.addEventListener("resize", computed, false);
+      })()
+  </script>
+    <div id="root"></div>
+
+  </body>
+  <script>
+    //=>匀速回到顶部
+    let root=document.getElementById("root");
+        let goBack=document.getElementById("goTop"),
+            winH=document.documentElement.clientHeight,
+            isRun=false;
+        let computed=function (){
+            //=>当页面卷曲的高度大于一屏的高度，就让元素显示，否则就消失
+            let srollT=document.documentElement.scrollTop;
+            if(srollT>=winH){
+                goBack.style.display="block";
+            }else{
+                goBack.style.display="none";
+            }
+        };
+        window.addEventListener("scroll",computed);
+        goBack.onclick=()=>{
+            if(isRun) return;
+            isRun=true;
+            let curScrollT=document.documentElement.scrollTop,
+                time=350,
+                step=curScrollT/time;
+
+            let timer=setInterval(()=>{
+                if(document.documentElement.scrollTop<=0){
+                    isRun=false;
+                    clearInterval(timer);
+                    return;
+                }
+                let curT1=document.documentElement.scrollTop-step*17;
+                document.documentElement.scrollTop=curT1;
+            },17)
+        }
+  </script>
+</html>
