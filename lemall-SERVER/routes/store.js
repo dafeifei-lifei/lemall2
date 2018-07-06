@@ -54,7 +54,8 @@ route.post('/remove', (req, res) => {
 
 route.get('/info', (req, res) => {
     let state = parseFloat(req.query.state) || 0,
-        personID = 1,
+        idlx = req.query.idlx,
+        personID = req.session.personID,
         storeList = [];
     if (personID) {
         //=>登录状态下是从JSON文件中获取：在STORE.JSON中找到所有personID和登录用户相同的(服务器从SESSION中可以获取用户ID的)
@@ -62,7 +63,8 @@ route.get('/info', (req, res) => {
             if (parseFloat(item.personID) === personID && parseFloat(item.state) === state) {
                 storeList.push({
                     currentId: parseFloat(item.currentId),
-                    storeID: parseFloat(item.id)
+                    storeID: parseFloat(item.id),
+                    idlx:idlx
                 });
             }
         });
@@ -74,11 +76,17 @@ route.get('/info', (req, res) => {
             });
         }
     }
-
+    console.log(storeList);
     //=>根据上面查找到的课程ID（storeList），把每一个课程的详细信息获取到，返回给客户端
     let data = [];
     storeList.forEach(({currentId, storeID} = {}) => {
-        let item = req.shoppingDATA.find(item => parseFloat(item.id) === currentId);
+        console.log(storeList);
+        console.log(idlx);
+
+        let item = req.shoppingDATA.find(item => {
+            return parseFloat(item.id) === parseFloat(currentId)&&item.idlx===idlx
+        });
+        console.log(storeID);
         item.storeID = storeID;
         data.push(item);
     });
@@ -91,6 +99,7 @@ route.get('/info', (req, res) => {
 
 route.post('/pay', (req, res) => {
     //=>把某一个课程的STATE修改为1（改完后也是需要把原始JSON文件替换的）
+    console.log(req.body);
     let {storeID,idlx} = req.body,
         personID = req.session.personID,
         // personID=2;

@@ -4,7 +4,10 @@ import {Icon} from "antd"
 import "../static/css/shopCart.less"
 import "../static/css/reset.min.css"
 import action from "../store/action"
-import {payData} from "../api/shopCart";
+import {payShopCart} from "../api/shopCart";
+import {checkLogin} from "../api/personal";
+
+
 
 class ShopCart extends React.Component {
     constructor(props) {
@@ -17,8 +20,9 @@ class ShopCart extends React.Component {
     render() {
         console.log(this);
         let {count,state,checkAll} = this.props.shopCart;
-        let {Cart} =this.props;
-        console.log(this.props);
+        let {Cart,shopCart:{unpay}} =this.props;
+        let allShop = [...Cart,...unpay];
+
 
         return <div className={"shopCartBox"}>
             <div className={"shopHead"}>
@@ -27,15 +31,16 @@ class ShopCart extends React.Component {
                 <Icon type="form"/>
             </div>
 
-            {Cart.map((item,index)=>{
-                let {name,smallpic,price,dec} = item;
-                console.log(smallpic);
-                return <div className={"shopBody"}>
+            {allShop.map((item,index)=>{
+                let {name,smallpic,price,dec,check,id} = item;
+                console.log(item);
+                return <div className={"shopBody"} key={index}>
                     <div><span>乐视自营</span></div>
                     <div>
                         <div className={"select_check"}>
-                            <input type={"checkbox"} id={"ipt"} checked={!!state} onClick={this.select}/>
-                            <label htmlFor={"ipt"}><Icon type={"check"}/></label>
+                            {/*checked={!!state}*/}
+                            <input type={"checkbox"} id={"ipt"}  checked={check}  />
+                            <label htmlFor={"ipt"} onClick={this.props.handleSelect.bind(this,id)}><Icon type={"check"} /></label>
                         </div>
                         <div>
                             <a><img
@@ -48,10 +53,10 @@ class ShopCart extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <span className={"span1"}>¥{price*count}</span>
+                            <span className={"span1"}>¥{price*1}</span>
                             <p>
                                 <span onClick={this.minus}><Icon type="minus"/></span>
-                                <span>{count}</span>
+                                <span>{1}</span>
                                 <span onClick={this.plus}><Icon type="plus"/></span>
                             </p>
                         </div>
@@ -63,9 +68,9 @@ class ShopCart extends React.Component {
 
             <div className={"shopFooter"}>
                  <div className="shopFooter-left">
-                     <input type={"checkbox"} id={"iptAll"} checked={checkAll}/>
-                     <label htmlFor={"iptAll"}><Icon type={"check"}/></label>
-                     <span>全选</span>
+                     <input type={"checkbox"} id={"iptAll"} checked={this.props.selectAll} />
+                     <label htmlFor={"iptAll"} onChange={this.props.handleSelect.bind(this,"all")}><Icon type={"check"} /></label>
+                     <span >全选</span>
                  </div>
                 <div className="shopFooter-mid clearfix">
                      <h4 className="shopFooter-mid-t">
@@ -79,7 +84,7 @@ class ShopCart extends React.Component {
                     </h4>
                 </div>
                 <div className="shopFooter-right">
-                    <a href="javascript:;" onClick={this.pay}>去结算</a>
+                    <a href="javascript:;" onClick={this.handlePay}>去结算</a>
                 </div>
             </div>
 
@@ -115,15 +120,45 @@ class ShopCart extends React.Component {
         this.props.shopCartCount(count,tongbuState);
     }
 
-    pay=async ()=>{
-        let result = await payData({idlx:"classify",storeID:2});
-        if(result.code===0){
-            alert("支付成功");
+    // pay=async ()=>{
+    //     let result = await payData({idlx:"classify",storeID:2});
+    //     if(result.code===0){
+    //         alert("支付成功");
+    //     }
+    //     window.location.href = "#/home";
+    // }
+
+    handlePay = async () => {
+        //=>验证当前是否登录
+        let result = await checkLogin();
+        if (parseFloat(result.code) !== 0) {
+            alert('请先登录');
+            return;
         }
-        window.location.href = "#/home";
+
+        //=>获取所有被选中的存储ID
+        let selectIDList = [];
+        this.props.shopCart.unpay.forEach(item => {
+            if (item.check) {
+                selectIDList.push({storeID:item.storeID,idlx:item.idlx});
+            }
+        });
+        if (selectIDList.length === 0) {
+            alert('没有要被结算的订单!');
+            return;
+        }
+        console.log(selectIDList);
+        //=>根据ID发送删除的请求：生成每一个AXIOS删除操作的返回PROMISE数组，基于Promise.all验证是否都完成
+        selectIDList = selectIDList.map(({storeID,idlx}={}) => {
+            console.log(storeID,idlx);
+            return payShopCart(storeID,idlx);
+        });
+        Promise.all(selectIDList).then(() => {
+            console.log(1);
+            this.props.queryUnpay("classify");//=>DISPATCH
+            this.props.queryPay("classify");
+        });
     }
-
-
 
 }
 

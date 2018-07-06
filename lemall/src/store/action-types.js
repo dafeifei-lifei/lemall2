@@ -8,6 +8,12 @@ export const LX_FENLEI="LX_FENLEI";
 
 /*购物车 武杨杨*/
 export const SHOPCART_INFO = "SHOPCART_INFO";
+export const HEANLE_SELECT = "HEANLE_SELECT";
+
+
+/* 获取服务器购物车信息 */
+export const SHOP_UNPAY = 'SHOP_UNPAY';
+export const SHOP_PAY = 'SHOP_PAY';
 
 
 /* 详情页 classify add redux */

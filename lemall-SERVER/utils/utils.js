@@ -3,6 +3,8 @@ const {writeFile} = require('../utils/promiseFS'),
 
 function ADD_STORE(req, res, currentId,idlx) {
     //=>把某一个商品存储到JSON中，实现加入购物车的功能
+    console.log(req.session.personID);
+
     let personID = req.session.personID,
         storeInfo = {
             id: req.storeDATA.length === 0 ? 1 : (parseFloat(req.storeDATA[req.storeDATA.length - 1].id) + 1),//=>ID自增长

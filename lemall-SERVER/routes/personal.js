@@ -31,6 +31,7 @@ route.post('/login', (req, res) => {
     if (item) {
         //=>登录成功：把当前登录用户的ID存储到SESSION上（如果SESSION上有用户信息就代表登录成功，反之没有登录）
         req.session.personID = parseFloat(item.id);
+        console.log(req.session.personID);
         add_temp_store(req, res);//=>把存储到SESSION中的购物信息写入到JSON文件中
         res.send({code: 0, msg: 'OK!'});
         return;
@@ -94,6 +95,7 @@ route.get('/info', (req, res) => {
 
 route.get('/out', (req, res) => {
     //=>退出登录就是干掉SESSION
+    console.log(req.session.personID,23);
 
     req.session.personID = null;
     res.send({code: 0, msg: 'OK!'});
