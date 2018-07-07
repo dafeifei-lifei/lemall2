@@ -40,14 +40,14 @@ function shopCart(state=INIT_STATE,action) {
                     return {...item, check: state.selectAll};
                 });
             } else {
-                console.log(mode);
-
                 let item = state.shopCart.unpay.find(item => {
                     return parseFloat(item.id) === parseFloat(mode);
                 });
 
+
                 if(!item){
                     item={};
+
                 }
                 item.check = !item.check;
                 //=>注意:验证是否所有的课程都是选中的，如果是全选也要选中

@@ -7,8 +7,11 @@ import action from "../store/action/index.js"
 import Banner from "./../routes/Detail/Banner.js"
 import "./../static/css/detail.less"
 import {queryDetail} from "../api/detail.js"
+
 import {checkLogin} from "../api/personal"
-import result from "../static/json/detail.json"
+// import result from "../static/json/detail.json"
+
+
 
 class Detail extends React.Component {
     constructor() {
@@ -5625,30 +5628,25 @@ class Detail extends React.Component {
         let {location, add} = this.props;
         let obj = Qs.parse(location.search.substr(1));
         await this.props.add(obj);
-        this.props.queryUnpay("classify");
-        //进行登录检测，得到服务器数据和未登录redux数据
-        let result = await checkLogin();
-        if(result.code===1){
-            //如果未登录进行存储
-            let data = this.props.select.find((item)=>{
-                return parseFloat(item.id)===parseFloat(obj.id)&&item.idlx===obj.idlx;
-            });
-            this.props.classify_cart(data);
-        }
-        console.log(this);
+        let data = this.props.select.find((item) => {
+            return parseFloat(item.id) === parseFloat(obj.id) && item.idlx === obj.idlx;
+        })
+        this.props.classify_cart(data);
+
+        console.log(this.props);
 
 
         this.alertBox.classList.add("alertBox");
         this.timer = setTimeout(() => {
-            this.alertBox.classList.remove("alertBox");
+            this.alertBox.classList.remove("alertBox")
             this.isRun=false;
         }, 1500);
-    };
+    }
     handleTitle = (index) => {
         this.setState({
             titleIndex: index
         })
-    };
+    }
     handleProvince = (index, province) => {
         this.setState({
             provinceIndex: index,
