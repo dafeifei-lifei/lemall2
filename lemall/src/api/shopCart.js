@@ -11,11 +11,6 @@ export function queryShopCart(state = 0,idlx) {
     });
 }
 
-//
-// export function payData(payload){
-//     return axios.post("/store/pay",payload)
-// }
-
 //=>支付
 export function payShopCart(storeID,idlx) {
     return axios.post('/store/pay', {

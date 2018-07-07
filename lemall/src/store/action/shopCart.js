@@ -9,12 +9,7 @@ let shopCart={
             state
         }
     },
-    // handleSelect(mode){
-    //     return {
-    //         type:TYPES.HEANLE_SELECT,
-    //         mode
-    //     }
-    // }
+
     async queryUnpay(payload) {
             return {
                 type: TYPES.SHOP_UNPAY,
@@ -33,6 +28,13 @@ let shopCart={
         return {
             type: TYPES.HEANLE_SELECT,
             mode
+        }
+    },
+
+    addShop(unPayCart){
+        return {
+            type:TYPES.ADD_SHOP,
+            unPayCart
         }
     }
 

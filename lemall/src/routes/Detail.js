@@ -7,6 +7,7 @@ import action from "../store/action/index.js"
 import Banner from "./../routes/Detail/Banner.js"
 import "./../static/css/detail.less"
 import {queryDetail} from "../api/detail.js"
+import {checkLogin} from "../api/personal"
 import result from "../static/json/detail.json"
 
 class Detail extends React.Component {
@@ -5683,4 +5684,4 @@ class Detail extends React.Component {
     }
 }
 
-export default connect(state => ({...state.detail, ...state.select, ...state.shopCart}), action.detail)(Detail);
+export default connect(state => ({...state.detail, ...state.select, ...state.shopCart}), {...action.detail,...action.shopCart})(Detail);

@@ -16,7 +16,7 @@ function detail(state=INIT_STATE,action) {
             break;
 
         case TYPES.CLASSIFY_CART:
-            state.Cart.push(action.data);
+            state.Cart.push({...action.data,check:true});
             break;
     }
     return state;
