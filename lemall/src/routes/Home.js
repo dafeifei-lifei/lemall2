@@ -20,11 +20,26 @@ class Home extends React.Component {
         }
     }
     async componentDidMount(){
+        if (this.props.dataBanner.length===0) {
         await this.props.queryBanner();
+
+        }
+        if (this.props.dataBanner1.length===0) {
         await this.props.queryBanner2();
+
+        }
+        if (this.props.dataHot.length===0) {
         await this.props.queryHot();
+
+        }
+        if (this.props.dataBig.length===0) {
         await this.props.queryBig();
+
+        }
+        if (this.props.dataFitting.length===0) {
         await this.props.queryFitting();
+
+        }
 
         this.setState({
              isLoad:true

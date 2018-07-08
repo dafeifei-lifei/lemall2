@@ -1,6 +1,6 @@
 import React from "react"
 import {connect} from "react-redux"
-import {Icon} from "antd"
+import {Icon,Alert} from "antd"
 import "../static/css/shopCart.less"
 import "../static/css/reset.min.css"
 import action from "../store/action"
@@ -13,15 +13,35 @@ class ShopCart extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            state:this.props.shopCart.state
+            state:this.props.shopCart.state,
+            count:1,
+            first:0,
+            price:0,
+            allPrice:0
         }
+    }
+
+    async componentDidMount(){
+        let result = await checkLogin();
+        if (parseFloat(result.code) === 0) {
+            await this.props.queryUnpay("classify");
+            await this.props.addShop(this.props.Cart);
+            console.log(this.props.shopCart.unpay);
+        }else if(this.props.shopCart.unpay.length===0){
+        this.props.addShop(this.props.Cart);
+        }
+        this.setState({
+            first:1
+        })
     }
 
     render() {
         console.log(this);
-        let {count,state,checkAll} = this.props.shopCart;
-        let {Cart,shopCart:{unpay}} =this.props;
-        let allShop = [...Cart,...unpay];
+        let {count,state,checkAll,unpay} = this.props.shopCart;
+        // let {Cart,shopCart:[unpay]} =this.props;
+        // console.log(Cart,unpay);
+        // let allShop = [...Cart,...unpay];
+         console.log(unpay);
 
 
         return <div className={"shopCartBox"}>
@@ -30,10 +50,10 @@ class ShopCart extends React.Component {
                 <span>购物车</span>
                 <Icon type="form"/>
             </div>
-
-            {allShop.map((item,index)=>{
-                let {name,smallpic,price,dec,check,id} = item;
-                console.log(item);
+            {unpay.length===0?<Alert type="warning" description="当前还没有任何课程，快去购买吧"/>:null}
+            {unpay.map((item,index)=>{
+                let {name,smallpic,price,dec,check,id,idlx} = item;
+                console.log(name);
                 return <div className={"shopBody"} key={index}>
                     <div><span>乐视自营</span></div>
                     <div>
@@ -53,11 +73,11 @@ class ShopCart extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <span className={"span1"}>¥{price*1}</span>
+                            <span className={"span1"}>¥{price*this.state.count}</span>
                             <p>
-                                <span onClick={this.minus}><Icon type="minus"/></span>
-                                <span>{1}</span>
-                                <span onClick={this.plus}><Icon type="plus"/></span>
+                                <span onClick={this.minus.bind(this,id,idlx,index)}><Icon type="minus"/></span>
+                                <span>1</span>
+                                <span ref={index} onClick={this.plus.bind(this,id,idlx,index)} ><Icon type="plus"/></span>
                             </p>
                         </div>
                     </div>
@@ -92,21 +112,35 @@ class ShopCart extends React.Component {
         </div>
     }
 
-    minus=()=>{
-        let {count,state} =  this.props.shopCart;
-        if(count<1){
-            return;
-        }
-        count-=1;
-        this.props.shopCartCount(count,state);
-
+    minus= async (id,idlx,index)=>{
+        // let {count,state} =  this.props.shopCart;
+        // if(count<1){
+        //     return;
+        // }
+        // count-=1;
+        // this.props.shopCartCount(count,state);
+        await this.props.add({id:id,idlx:idlx});
+        // this.setState({
+        //     count:this.state.count+1
+        // });
+        if(this.refs[index].previousSibling.innerHTML<=1)return;
+        this.refs[index].previousSibling.innerHTML=parseFloat(this.refs[index].previousSibling.innerHTML)-1;
+        this.setState({
+            count:this.refs[index].previousSibling.innerHTML
+        })
 
     }
 
-    plus=()=>{
-        let {count,state} =  this.props.shopCart;
-        count+=1;
-        this.props.shopCartCount(count,state);
+    plus= async (id,idlx,index) =>{
+        await this.props.add({id:id,idlx:idlx});
+        // this.setState({
+        //     count:this.state.count+1
+        // });
+        this.refs[index].previousSibling.innerHTML=parseFloat(this.refs[index].previousSibling.innerHTML)+1;
+        console.log(id,idlx);
+        this.setState({
+            count:this.refs[index].previousSibling.innerHTML
+        })
 
     }
 
@@ -120,13 +154,7 @@ class ShopCart extends React.Component {
         this.props.shopCartCount(count,tongbuState);
     }
 
-    // pay=async ()=>{
-    //     let result = await payData({idlx:"classify",storeID:2});
-    //     if(result.code===0){
-    //         alert("支付成功");
-    //     }
-    //     window.location.href = "#/home";
-    // }
+  
 
     handlePay = async () => {
         //=>验证当前是否登录
@@ -136,6 +164,7 @@ class ShopCart extends React.Component {
             return;
         }
 
+        
         //=>获取所有被选中的存储ID
         let selectIDList = [];
         this.props.shopCart.unpay.forEach(item => {
@@ -143,19 +172,20 @@ class ShopCart extends React.Component {
                 selectIDList.push({storeID:item.storeID,idlx:item.idlx});
             }
         });
+        console.log(selectIDList);
+
         if (selectIDList.length === 0) {
             alert('没有要被结算的订单!');
             return;
         }
         console.log(selectIDList);
-        //=>根据ID发送删除的请求：生成每一个AXIOS删除操作的返回PROMISE数组，基于Promise.all验证是否都完成
         selectIDList = selectIDList.map(({storeID,idlx}={}) => {
             console.log(storeID,idlx);
             return payShopCart(storeID,idlx);
         });
         Promise.all(selectIDList).then(() => {
             console.log(1);
-            this.props.queryUnpay("classify");//=>DISPATCH
+            this.props.queryUnpay("classify");
             this.props.queryPay("classify");
         });
     }
@@ -165,4 +195,4 @@ class ShopCart extends React.Component {
 export default connect(state=>({
     ...state.shopCart,
     ...state.detail
-}),action.shopCart)(ShopCart);
+}),{...action.shopCart,...action.detail})(ShopCart);

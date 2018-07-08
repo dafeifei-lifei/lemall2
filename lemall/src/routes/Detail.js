@@ -7,7 +7,9 @@ import action from "../store/action/index.js"
 import Banner from "./../routes/Detail/Banner.js"
 import "./../static/css/detail.less"
 import {queryDetail} from "../api/detail.js"
-import {checkLogin} from "../api/personal";
+
+import {checkLogin} from "../api/personal"
+// import result from "../static/json/detail.json"
 
 
 
@@ -5615,7 +5617,7 @@ class Detail extends React.Component {
                     <div className="list">
                         <ul className={this.state.titleIndex === 0 ? "choose" : ""}>
                             {this.state.regionData.map((item, index) => {
-                                return <li className={this.state.provinceIndex === index ? "choose" : ""} key="index"
+                                return <li className={this.state.provinceIndex === index ? "choose" : ""} key={index}
                                            onClick={this.handleProvince.bind(this, index, item.name)}>{item.name}</li>
                             })}
 
@@ -5716,4 +5718,6 @@ class Detail extends React.Component {
     }
 }
 
-export default connect(state => ({...state.detail, ...state.select, ...state.shopCart,...state.home}), action.detail)(Detail);
+
+export default connect(state => ({...state.detail, ...state.select, ...state.shopCart,...state.home}), {...action.detail,...action.shopCart})(Detail);
+
