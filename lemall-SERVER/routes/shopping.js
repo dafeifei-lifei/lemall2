@@ -48,6 +48,7 @@ route.get('/info', (req, res) => {
 
 //列表数据
 route.get('/list', (req, res) => {
+    console.log(111);
     //=>接收客户端传递的参数值，不传的给默认值：limit每页展示条数，page是第几页，type是筛选的类型
     let {limit = 6, page = 1} = req.query;
     limit = parseFloat(limit);

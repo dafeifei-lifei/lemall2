@@ -11,7 +11,7 @@ export default class Maintain extends React.Component {
     render() {
         return <div className={'maintainBox'}>
             <div className={'titleBox clearfix'}>
-                <Icon type={'left'} style={{fontSize: '25px', float: 'left', margin: '10px'}}/>
+                <Icon type={'left'} style={{fontSize: '25px', float: 'left', margin: '10px'}} onClick={()=>{this.props.history.go(-1)}}/>
                 <span  className={'title'} style={{
                     fontSize: '15px',
                     textAlign: 'center',

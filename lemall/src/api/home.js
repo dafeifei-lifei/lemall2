@@ -40,3 +40,9 @@ export function queryFitting() {
     });
 
 }
+
+export function mallSort(payload){
+    return axios.get("shopping/list",{
+        params:payload
+    })
+}

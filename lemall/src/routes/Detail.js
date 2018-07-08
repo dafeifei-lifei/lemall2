@@ -9,8 +9,8 @@ import "./../static/css/detail.less"
 import {queryDetail} from "../api/detail.js"
 
 import {checkLogin} from "../api/personal"
-// import result from "../static/json/detail.json"
 
+// import result from "../static/json/detail.json"
 
 
 class Detail extends React.Component {
@@ -5423,23 +5423,60 @@ class Detail extends React.Component {
     }
 
     render() {
-        let {location: {search}, select} = this.props,
+        console.log(this.props);
+        let {location: {search}, select, dataMall, dataBanner, dataBig, dataFitting, dataHot} = this.props,
             queryObj = Qs.parse(search.substr(1));
-        if (!search || !select.toString()) return "";
+        if (!search) return "";
+        console.log(search);
+        let {selectProvince, selectCity, selectArea} = this.state;
         let name, bigpic, dec, price;
+        //=>分类
         if (queryObj.idlx === "classify") {
             name = select[parseFloat(queryObj.id) - 1].name;
             bigpic = select[parseFloat(queryObj.id) - 1].bigpic;
             dec = select[parseFloat(queryObj.id) - 1].dec;
             price = select[parseFloat(queryObj.id) - 1].price
         }
+        //=>商城排序
+        if (queryObj.idlx === "list") {
+            name = dataMall[parseFloat(queryObj.id) - 1].title;
+            bigpic = dataMall[parseFloat(queryObj.id) - 1].bigpic;
+            dec = dataMall[parseFloat(queryObj.id) - 1].describe;
+            price = dataMall[parseFloat(queryObj.id) - 1].price
+        }
+        //=>首页banner
+        if (queryObj.idlx === "banner") {
+            name = dataBanner[parseFloat(queryObj.id) - 1].name;
+            bigpic = dataBanner[parseFloat(queryObj.id) - 1].bigpic;
+            dec = dataBanner[parseFloat(queryObj.id) - 1].dec;
+            price = dataBanner[parseFloat(queryObj.id) - 1].price
+        }
+        if (queryObj.idlx === "bigScreen") {
+            name = dataBig[parseFloat(queryObj.id) - 1].name;
+            bigpic = dataBig[parseFloat(queryObj.id) - 1].bigpic;
+            dec = dataBig[parseFloat(queryObj.id) - 1].dec;
+            price = dataBig[parseFloat(queryObj.id) - 1].price
+        }
+        if (queryObj.idlx === "fitting") {
+            name = dataFitting[parseFloat(queryObj.id) - 1].name;
+            bigpic = dataFitting[parseFloat(queryObj.id) - 1].bigpic;
+            dec = dataFitting[parseFloat(queryObj.id) - 1].dec;
+            price = dataFitting[parseFloat(queryObj.id) - 1].price;
+            console.log(name);
+        }
+        if (queryObj.idlx === "hotSale") {
+            name = dataHot[parseFloat(queryObj.id) - 1].name;
+            bigpic = dataHot[parseFloat(queryObj.id) - 1].bigpic;
+            dec = dataHot[parseFloat(queryObj.id) - 1].dec;
+            price = dataHot[parseFloat(queryObj.id) - 1].price
+        }
 
-        let {selectProvince, selectCity, selectArea} = this.state;
 
-        let size = /(\d)+/g.exec(name)[0];
+        let size = /(\d)+/g.exec(name) ? /(\d)+/g.exec(name)[0] : "38";
         //=>配送时间
         let date = new Date().toLocaleString().trim();
         date = date.match(/\d+/g);
+        console.log("ok");
         return <div className="detailBox">
             {/*回退按钮*/}
             <div className="backButton" onClick={() => {
@@ -5457,7 +5494,7 @@ class Detail extends React.Component {
                 <div className="linkage">
                     <p>送至:</p>
                     <div className="site">
-                        {this.state.moren ? <p><span style={{color:"#f05353",fontWeight:"bold"}}>请选择省市县</span></p> :
+                        {this.state.moren ? <p><span style={{color: "#f05353", fontWeight: "bold"}}>请选择省市县</span></p> :
                             <p><span>{selectProvince}</span>><span>{selectCity}</span>><span>{selectArea}</span>></p>}
                         <p><b>现货,</b>24:00前完成支付，预计({`${date[0]}.${date[1]}.${parseFloat(date[2]) + 2}`})之前发货</p>
                     </div>
@@ -5623,14 +5660,14 @@ class Detail extends React.Component {
         })
     };
     addCart = async () => {
-        if(this.isRun) return;
-        this.isRun=true;
+        if (this.isRun) return;
+        this.isRun = true;
         let {location, add} = this.props;
         let obj = Qs.parse(location.search.substr(1));
         await this.props.add(obj);
         let data = this.props.select.find((item) => {
             return parseFloat(item.id) === parseFloat(obj.id) && item.idlx === obj.idlx;
-        })
+        });
         this.props.classify_cart(data);
 
         console.log(this.props);
@@ -5638,48 +5675,52 @@ class Detail extends React.Component {
 
         this.alertBox.classList.add("alertBox");
         this.timer = setTimeout(() => {
-            this.alertBox.classList.remove("alertBox")
-            this.isRun=false;
+            this.alertBox.classList.remove("alertBox");
+            this.isRun = false;
         }, 10);
     }
+
+
     handleTitle = (index) => {
         this.setState({
             titleIndex: index
         })
-    }
+    };
     handleProvince = (index, province) => {
         this.setState({
             provinceIndex: index,
             titleIndex: 1,
             selectProvince: province
         })
-    }
+    };
     handleCity = (index, city) => {
         this.setState({
             cityIndex: index,
             titleIndex: 2,
             selectCity: city
         })
-    }
+    };
     handleArea = (index, item) => {
         this.setState({
             areaIndex: index,
             selectArea: item,
             dialogShow: false,
-            moren:false
+            moren: false
         })
-    }
+    };
     clickDialog = () => {
         this.setState({
             dialogShow: true
         })
-    }
+    };
     dialogClose = () => {
         this.setState({
             dialogShow: false,
-            moren:false
+            moren: false
         })
     }
 }
 
-export default connect(state => ({...state.detail, ...state.select, ...state.shopCart}), {...action.detail,...action.shopCart})(Detail);
+
+export default connect(state => ({...state.detail, ...state.select, ...state.shopCart, ...state.home}), {...action.detail, ...action.shopCart})(Detail);
+

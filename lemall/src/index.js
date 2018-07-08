@@ -12,17 +12,23 @@ import {LocaleProvider} from "antd"
 import zh_CN from "antd/lib/locale-provider/zh_CN.js"
 
 /*CSS*/
-import "./static/css/reset.min.css"
-import "./static/css/common.less"
+import "./static/css/reset.min.css";
+import "./static/css/common.less";
+import "./static/css/television.less"
 /*COMPONENT*/
-import NavBottom from "./component/NavBottom.js"
-import Home from "./routes/Home.js"
-import Personal from "./routes/Personal.js"
-import Select from "./routes/Select.js"
-import ShopCart from "./routes/ShopCart.js"
-import NavSearch from "./component/NavSearch.js"
-import Detail from "./routes/Detail.js"
-import GoTop from "./component/GoTop.js"
+import NavBottom from "./component/NavBottom.js";
+import Home from "./routes/Home.js";
+import Personal from "./routes/Personal.js";
+import Select from "./routes/Select.js";
+import ShopCart from "./routes/ShopCart.js";
+import NavSearch from "./component/NavSearch.js";
+import Detail from "./routes/Detail.js";
+import GoTop from "./component/GoTop.js";
+
+import Television from "./routes/home/Television";
+import Maintain from "./routes/home/Maintain";
+import VIP from "./routes/home/VIP";
+import Letv from "./routes/home/Letv";
 
 
 ReactDOM.render(
@@ -34,12 +40,17 @@ ReactDOM.render(
                     <main className="container">
                         <Switch>
                             <Route path="/home" exact component={Home}/>
+                            <Route path={'/home/tv'} component={Television}/>
+                            <Route path={'/home/vip'} component={VIP}/>
+                            <Route path={'/home/install'} component={Maintain}/>
+                            <Route path={'/home/lemi'} component={Letv}/>
+
                             <Route path="/select" component={Select}/>
                             <Route path="/shopCart" component={ShopCart}/>
                             <Route path="/personal" component={Personal}/>
                             <Route path="/detail" component={Detail}/>
-                            {/*<Route push="/navSearch" exact component={NavSearch}/>*/}
-                            {/*<Redirect from="/" to="/home"/>*/}
+                            <Route path="/navSearch" component={NavSearch}/>
+                            <Redirect to="/home"/>
                         </Switch>
                     </main>
                     {/*NavBottom*/}

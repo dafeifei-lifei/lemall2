@@ -1,99 +1,175 @@
+/*超级电视*/
 .television {
-  background: #f2f2f2;
+  background: #f5f5f5;
   .title{
-    height: 1.08rem;
-    line-height: 1.08rem;
-  }
-  .televisionBody {
-    ul {
-      width: 100%;
-      height: 1.2rem;
-      background-color: #f4f4f4;
-      font-size: 16px;
-      li {
-        border-bottom: .1px solid rgb(211, 211, 211);
-        border-top: .1px solid rgb(211, 211, 211);
-        float: left;
-        width: 1.4rem;
-        line-height: 1.2rem;
-        text-align: center;
+   display: flex;
+    padding: .2rem;
+    align-items: center;
+    border-bottom: #d2d2d2 solid .0005rem;
+    a{
+      color: #D1D1d1;
+    }
+    .goback{
+      font-size: .4rem;
+    }
+    .search{
+      border: #f5f5f5 solid .005rem;
+      border-radius: .1rem;
+      margin: 0 .3rem;
+      padding: .1rem .05rem;
+      display: flex;
+      align-items: center;
+      flex: 1;
+      background-color: white;
+
+      i{
+        font-size: .35rem;
+        vertical-align: center;
+        &:nth-of-type(1){
+          margin:0 .2rem 0 .15rem;
+        }
+      }
+      input{
+        border: none;
+        flex: 1;
       }
     }
   }
-  .televisionContent {
-    ul {
-      li {
-        border-bottom:1px solid #d3d3d3;
-        height: 2.1rem;
-        overflow: hidden;
-        a {
-          height: 100%;
-          position: relative;
-          .hot{
-            position: absolute;
-            top: 0;
-            left:-6.2rem;
-            display: inline-block;
-            width: 1rem;
-            height: .4rem;
-            line-height: .4rem;
+  .select{
+    ul{
+      display: flex;
+      margin-bottom: 0;
+      li{
+        flex: 1;
+        text-align: center;
+        a{
+          box-sizing: border-box;
+          display: block;
+          padding: .25rem 0;
+          color: #666;
+
+          &.active{
+            color: #F01E00;
+            border-bottom: #F01E00 solid .005rem;
+          }
+        }
+      }
+    }
+}
+  .list{
+    padding-left: .1rem;
+    background: #f9f9f9;
+    .listDetail{
+      padding-top: .1rem;
+      display: flex;
+      .listLeft{
+        width: 25%;
+        margin-right: .2rem;
+        position: relative;
+        img{
+          width: 100%;
+        }
+        .rightTop{
+          position: absolute;
+          top:0;
+          right:0;
+          span{
+            display: block;
+            background-color: #a94af4;
+            box-sizing: border-box;
+            width: .7rem;
+            padding: 0 .1rem;
             text-align: center;
-            color: #FFFFFF;
-            background: #a94af4;
-            font-size: 10px;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
-          }
-          img {
-            float: left;
-            width: 2rem;
-            height: 2rem;
-            padding-bottom: .2rem;
-          }
-          .con {
-            float: left;
-            width: 5.2rem;
-            .name {
-              display: inline-block;
-              font-size: .4rem;
-              color: #2a2a2a;
+            em{
+              font: inherit;
+              color: white;
+              font-size: .01rem;
+              display: block;
+              transform:scale(.7);
             }
-            .describe {
-              display: inline-block;
-              color: #999;
-              width: 250px;
+          }
+          i{
+          display: block;
+            border-right: .35rem solid transparent;
+            border-left: .35rem solid transparent;
+            border-bottom: 0rem solid transparent;
+            border-top: .1rem solid #a94af4;
+          }
+        }
+      }
+      .listRight{
+        flex: 1;
+        border-bottom: #D1D1d1 solid .002rem;
+        padding-bottom: .05rem;
+        p{
+          margin-bottom: 0;
+        }
+        display: flex;
+        flex-direction: column;
+        .top{
+          flex: 1;
+          p{
+            color: #999999;
+            font-size: .15rem;
+            &:nth-of-type(1){
+              color: #333;
+              font-size: .3rem;
+            }
+          }
+        }
+        .bottom{
+          display: flex;
+          //align-items: center;
+          p{
+            flex: 1;
+            color: #f45353;
+            font-size: .32rem;
+            font-weight: normal;
+            span{
+              font-size: .25rem;
+            }
+          }
+          div{
+            position: relative;
+            margin-right: .2rem;
+            ul{
+              display: flex;
+              margin-top: .1rem;
               margin-bottom: 0;
-            }
-            .price {
-              color: red;
-              margin: 10px 0 0;
-              font-size: .4rem;
-            }
-          }
-          .starBox{
-            position: absolute;
-            right: -12px;
-            bottom: -103px;
-            display: inline-block;
-            width: 2rem;
-            height: .4rem;
-            .anticon-star{
-              // float: right;
-              // background: yellow;
-              color: yellow;
+              li{
+                margin-right: .05rem;
+                &:last-child{
+                  margin-right: 0;
+                }
+              }
+              i{
+                font-size: .2rem;
+                color: #D1D1d1;
+              }
+              &.yellow{
+                width: 72%;
+                overflow: hidden;
+                white-space: nowrap;
+                position: absolute;
+                top:0;
+                left: 0;
+                i{
+                  color: #ffcd40;
+                }
+              }
             }
           }
         }
       }
     }
   }
-}
-
-.television{
-  .ant-table-column-has-filters{
-    padding: .1rem;
+  button{
+    margin: .2rem auto;
+    display: block;
+    padding: 0 .4rem;
   }
 }
+
 
 //会员
 .VIPBox {
