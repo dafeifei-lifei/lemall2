@@ -5573,7 +5573,7 @@ class Detail extends React.Component {
                 <div className="content">
                     <h3>
                         {this.state.linkageList.map((item, index) => {
-                            return <span className={this.state.titleIndex === index ? "active" : ""}
+                            return <span key={index} className={this.state.titleIndex === index ? "active" : ""}
                                          onClick={this.handleTitle.bind(this, index)}>{item}</span>
                         })}
 
@@ -5581,7 +5581,7 @@ class Detail extends React.Component {
                     <div className="list">
                         <ul className={this.state.titleIndex === 0 ? "choose" : ""}>
                             {this.state.regionData.map((item, index) => {
-                                return <li className={this.state.provinceIndex === index ? "choose" : ""} key="index"
+                                return <li className={this.state.provinceIndex === index ? "choose" : ""} key={index}
                                            onClick={this.handleProvince.bind(this, index, item.name)}>{item.name}</li>
                             })}
 
@@ -5640,7 +5640,7 @@ class Detail extends React.Component {
         this.timer = setTimeout(() => {
             this.alertBox.classList.remove("alertBox")
             this.isRun=false;
-        }, 1500);
+        }, 10);
     }
     handleTitle = (index) => {
         this.setState({

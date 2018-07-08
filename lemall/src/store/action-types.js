@@ -1,5 +1,6 @@
 /*详情页 加入购物车*/
 export const DETAIL_ADD="DETAIL_ADD";
+export const DETAIL_REMOVE="DETAIL_REMOVE";
 
 /*分类 王鲁宾*/
 export const LX_SELECT="LX_SELECT";
@@ -10,6 +11,7 @@ export const LX_FENLEI="LX_FENLEI";
 export const SHOPCART_INFO = "SHOPCART_INFO";
 export const HEANLE_SELECT = "HEANLE_SELECT";
 export const ADD_SHOP = "ADD_SHOP";
+export const REMOVE_SHOP="REMOVE_SHOP";
 
 /* 获取服务器购物车信息 */
 export const SHOP_UNPAY = 'SHOP_UNPAY';
@@ -18,6 +20,7 @@ export const SHOP_PAY = 'SHOP_PAY';
 
 /* 详情页 classify add redux */
 export const CLASSIFY_CART= "CLASSIFY_CART";
+export const CLASSIFY_CART_REMOVE = "CLASSIFY_CART_REMOVE";
 
 /*个人中心 李菲*/
 //=>验证是否登录

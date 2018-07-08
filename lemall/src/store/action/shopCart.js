@@ -15,6 +15,7 @@ let shopCart={
                 type: TYPES.SHOP_UNPAY,
                 result: await queryShopCart(0,payload)
             };
+
     },
     async queryPay(payload) {
         return {
@@ -34,6 +35,13 @@ let shopCart={
     addShop(unPayCart){
         return {
             type:TYPES.ADD_SHOP,
+            unPayCart
+        }
+    },
+
+    removeShop(unPayCart){
+        return {
+            type:TYPES.REMOVE_SHOP,
             unPayCart
         }
     }

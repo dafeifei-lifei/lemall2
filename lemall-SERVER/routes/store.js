@@ -71,7 +71,7 @@ route.get('/info', (req, res) => {
     } else {
         if (state === 0) {
             storeList = req.session.storeList || [];
-            storeList = storeList.map(item => {
+            storeList = storeList.map((item,index) => {
                 return {currentId: item, storeID: 0};
             });
         }
@@ -80,8 +80,6 @@ route.get('/info', (req, res) => {
     //=>根据上面查找到的课程ID（storeList），把每一个课程的详细信息获取到，返回给客户端
     let data = [];
     storeList.forEach(({currentId, storeID} = {}) => {
-        console.log(storeList);
-        console.log(idlx);
 
         let item = req.shoppingDATA.find(item => {
             return parseFloat(item.id) === parseFloat(currentId)&&item.idlx===idlx

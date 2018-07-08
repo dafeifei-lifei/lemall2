@@ -21,13 +21,30 @@ function shopCart(state=INIT_STATE,action) {
             break;
 
         case TYPES.ADD_SHOP:
-            state.shopCart.unpay.push(...action.unPayCart);
+            if(action.unPayCart instanceof Array){
+                state.shopCart.unpay.push(...action.unPayCart);
+            }else{
+                state.shopCart.unpay.push(action.unPayCart);
+            }
             console.log(state.shopCart.unpay,22);
+            break;
+
+        case TYPES.REMOVE_SHOP:
+            let count=0;
+            let one = state.shopCart.unpay.find((item,index)=>{
+                count=index;
+                return item.id ==action.unPayCart.id&&item.idlx==action.unPayCart.idlx;
+            })
+            state.shopCart.unpay.splice(count,1);
+            
             break;
 
         case TYPES.SHOP_PAY:
             if (parseFloat(action.result.code) === 0) {
                 state.shopCart.pay = action.result.data;
+                // state.shopCart.unpay = [];
+                // state.Cart=[];
+
             }
             break;
 
