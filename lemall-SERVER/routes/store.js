@@ -6,7 +6,6 @@ const express = require('express'),
 
 //=>增加购物车信息
 route.post('/add', (req, res) => {
-    console.log(req.session.personID);
     // let personID = req.session.personID,//=>登录用户的ID
     let personID =1,
         {id,idlx} = req.body;//=>传递的课程ID，我就是要把这个课程加入购物车
@@ -54,40 +53,48 @@ route.post('/remove', (req, res) => {
 
 route.get('/info', (req, res) => {
     let state = parseFloat(req.query.state) || 0,
-        idlx = req.query.idlx,
+        idlx1 = req.query.idlx,
         personID = req.session.personID,
         storeList = [];
-    if (personID) {
-        //=>登录状态下是从JSON文件中获取：在STORE.JSON中找到所有personID和登录用户相同的(服务器从SESSION中可以获取用户ID的)
-        req.storeDATA.forEach(item => {
-            if (parseFloat(item.personID) === personID && parseFloat(item.state) === state) {
-                storeList.push({
-                    currentId: parseFloat(item.currentId),
-                    storeID: parseFloat(item.id),
-                    idlx:idlx
+        console.log(idlx1,state,personID,req.storeDATA);
+    let data = [];
+
+    for(let key in idlx1) {
+        if (personID) {
+            //=>登录状态下是从JSON文件中获取：在STORE.JSON中找到所有personID和登录用户相同的(服务器从SESSION中可以获取用户ID的)
+            req.storeDATA.forEach(item => {
+                console.log(parseFloat(item.personID),personID,parseFloat(item.state),state,item.idlx,idlx1[key]);
+                if (parseFloat(item.personID) === personID && parseFloat(item.state) === state&&item.idlx===idlx1[key]) {
+                    storeList.push({
+                        currentId: parseFloat(item.currentId),
+                        storeID: parseFloat(item.id),
+                        idlx: item.idlx
+                    });
+                }
+            });
+            console.log(storeList);
+        } else {
+            if (state === 0) {
+                storeList = req.session.storeList || [];
+                storeList = storeList.map((item, index) => {
+                    return {currentId: item, storeID: 0};
                 });
             }
-        });
-    } else {
-        if (state === 0) {
-            storeList = req.session.storeList || [];
-            storeList = storeList.map((item,index) => {
-                return {currentId: item, storeID: 0};
-            });
         }
-    }
-    console.log(storeList);
+
     //=>根据上面查找到的课程ID（storeList），把每一个课程的详细信息获取到，返回给客户端
-    let data = [];
     storeList.forEach(({currentId, storeID} = {}) => {
 
-        let item = req.shoppingDATA.find(item => {
-            return parseFloat(item.id) === parseFloat(currentId)&&item.idlx===idlx
+        let item = req.shoppingDATA.find((item,index) => {
+            // console.log(parseFloat(item.id),parseFloat(currentId),item.idlx===idlx1[key],item.idlx,idlx1[key],index);
+            return parseFloat(item.id) === parseFloat(currentId)&&item.idlx===idlx1[key]
         });
-        console.log(storeID);
-        item.storeID = storeID;
+        // item.storeID = storeID;
+        if(!item)return;
         data.push(item);
     });
+    }
+    console.log(data,storeList);
     res.send({
         code: 0,
         msg: 'OK!',
@@ -97,14 +104,13 @@ route.get('/info', (req, res) => {
 
 route.post('/pay', (req, res) => {
     //=>把某一个课程的STATE修改为1（改完后也是需要把原始JSON文件替换的）
-    console.log(req.body);
     let {storeID,idlx} = req.body,
         personID = req.session.personID,
         // personID=2;
         isUpdate = false;
     if (personID) {
         req.storeDATA = req.storeDATA.map(item => {
-            if (parseFloat(item.id) === parseFloat(storeID)&&idlx===item.idlx && parseFloat(item.personID) === parseFloat(personID)) {
+            if (parseFloat(item.currentId) === parseFloat(storeID)&&idlx===item.idlx && parseFloat(item.personID) === parseFloat(personID)) {
                 isUpdate = true;
                 return {...item, state: 1};
             }
