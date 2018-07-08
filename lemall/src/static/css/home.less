@@ -1,0 +1,323 @@
+.homeContainer {
+  background: #e1e1e1;
+  .banner {
+    position: relative;
+    .ant-carousel {
+      .slick-slide {
+        width: 100%;
+        height: 4rem;
+        img {
+          width: 100%;
+        }
+      }
+      .slick-dots li {
+        width: .12rem;
+        height: .12rem;
+        border-radius: 50%;
+        margin: 0 .06rem;
+
+        button {
+          width: .12rem;
+          height: .12rem;
+          border-radius: 50%;
+          margin: 0 .06rem;
+        }
+
+      }
+    }
+
+    .logo {
+      position: absolute;
+      bottom: 3.2rem;
+      z-index: 9999;
+      left: .2rem;
+      span {
+        background: url("http://m.lemall.com/public/font/logo.svg") no-repeat;
+        background-size: 100% 100%;
+        display: block;
+        width: 1.34rem;
+        height: .35rem;
+      }
+    }
+    .personal {
+      position: absolute;
+      bottom: 3.1rem;
+      right: .2rem;
+      color: #FFF;
+      font-size: .5rem;
+
+    }
+    .shopCart {
+      position: absolute;
+      bottom: 3.1rem;
+      right: .8rem;
+      font-size: .5rem;
+      color: #FFF;
+    }
+    .search {
+      position: absolute;
+      bottom: 3.1rem;
+      left: 1.75rem;
+      display: block;
+      width: 4.2rem;
+      height: .64rem;
+      background: rgba(249, 249, 249, .5);
+      border-radius: .08rem;
+      color: #FFF;
+      font-size: .32rem;
+      line-height: .64rem;
+      i {
+        font-size: .42rem;
+        margin: 0 .2rem;
+        line-height: .64rem;
+      }
+
+    }
+
+  }
+  .nav {
+    padding: .3rem .2rem;
+    background: #FFF;
+    width: 100%;
+    overflow: hidden;
+    li {
+      display: inline-block;
+      width: 20%;
+      &:nth-of-type(1){
+        text-align: center;
+       i{
+         margin-left: .35rem;
+       }
+        span{
+          margin-left: 0;
+        }
+      }
+      i {
+        display: block;
+        width: .7rem;
+        height: .7rem;
+        line-height: .7rem;
+        font-size: .55rem;
+        margin-left: .4rem;
+        border-radius: .2rem;
+        text-align: center;
+        color: #FFF;
+        &.fenlei {
+          background: lightskyblue;
+        }
+        &.tv {
+          background: orange;
+        }
+        &.vip {
+          background: lightsalmon;
+        }
+        &.install {
+          background: burlywood;
+        }
+        &.lemi {
+          background: coral;
+        }
+      }
+      span {
+        font-style: normal;
+        display: block;
+        width: 100%;
+        padding-top: .2rem;
+        font-size: .2rem;
+        color: #2a2a2a;
+        margin-left: .3rem;
+
+      }
+    }
+  }
+  .banner2 {
+    margin-top: -.29rem;
+    display: block;
+    position: relative;
+    height: 1.4rem;
+    .container {
+      background: #f1f1f1;
+      padding: 0  0 .1rem 0 ;
+      .imgContainer {
+        width: 1.5rem;
+        display: inline-block;
+        height: 1.4rem;
+        line-height: 1.4rem;
+        margin-bottom: -.44rem;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      .title{
+        position: relative;
+      }
+      h3 {
+        display: inline-block;
+        width: 3rem;
+        height: .4rem;
+        position: absolute;
+        font-size: .24rem;
+        left: 1.8rem;
+        bottom: 4rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      p {
+        display: inline-block;
+        position: absolute;
+        bottom: 3.7rem;
+        left: 1.8rem;
+        font-size: .20rem;
+      }
+
+    }
+    .today {
+      img {
+        display: inline-block;
+        width: 1.9rem;
+        height: 1.15rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 99999;
+      }
+      span {
+        position: absolute;
+        right: 1.65rem;
+        top: .37rem;
+        z-index: 9999;
+        width: .4rem;
+        height: .3rem;
+        border:0 #000 solid;
+        background: #FFFFFB;
+        display: block;
+        transform: rotateZ(40deg);
+      }
+    }
+
+  }
+  .hot {
+    h2 {
+      background: #FFF;
+      margin: 0;
+      font-size: .35rem;
+      padding: .15rem;
+    }
+    .containerBox {
+      width: 100%;
+      height: 4.2rem;
+      border: .01rem solid #e1e1e0;
+      box-sizing: border-box;
+      overflow: hidden;
+      li {
+        float: left;
+        &.containerLeft {
+          width: 50%;
+          height: 100%;
+          border: .01rem solid #e1e1e0;
+          box-sizing: border-box;
+          overflow: hidden;
+          img{
+            width: 100%;
+          }
+        }
+        &.containerRight {
+          width: 50%;
+          height: 100%;
+          .top{
+            display: block;
+            width: 100%;
+            height: 50%;
+            border: .01rem solid #e1e1e0;
+            box-sizing: border-box;
+            overflow: hidden;
+            img{
+              width: 100%;
+            }
+          }
+          .bottom{
+            display: block;
+            width: 100%;
+            height: 50%;
+            border: .01rem solid #e1e1e0;
+            box-sizing: border-box;
+            overflow: hidden;
+            border-top: 0;
+            img{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .big{
+    margin: .4rem 0 .4rem 0;
+    h2 {
+      background: #FFF;
+      margin: 0;
+      font-size: .35rem;
+      padding: .15rem;
+    }
+    .top{
+      width: 100%;
+      height: 3.75rem;
+      img{
+        width: 100%;
+      }
+    }
+    .bottom{
+      width: 100%;
+      height: 5.82rem;
+      margin: 0;
+      padding: 0.01rem;
+      li{
+        float: left;
+        width: 33.33%;
+        height: 50%;
+        border: .01rem solid #e1e1e0;
+        box-sizing: border-box;
+        img{
+          width: 100%;
+        }
+      }
+    }
+
+  }
+  .accessories{
+    h2 {
+      background: #FFF;
+      margin: 0;
+      font-size: .35rem;
+      padding: .15rem;
+    }
+    .top{
+      width: 100%;
+      height: 3.75rem;
+      img{
+        width: 100%;
+      }
+    }
+    .bottom{
+      width: 100%;
+      height: 5.7rem;
+      margin: 0 0 1.3rem 0;
+      padding: 0.01rem;
+      li{
+        float: left;
+        width: 33.33%;
+        height: 50%;
+        box-sizing: border-box;
+        border: .01rem solid #e1e1e0;
+        img{
+          width: 100%;
+        }
+      }
+    }
+
+  }
+
+
+}

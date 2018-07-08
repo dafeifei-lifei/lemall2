@@ -1,0 +1,455 @@
+/*超级电视*/
+.television {
+  background: #f5f5f5;
+  .title{
+   display: flex;
+    padding: .2rem;
+    align-items: center;
+    border-bottom: #d2d2d2 solid .0005rem;
+    a{
+      color: #D1D1d1;
+    }
+    .goback{
+      font-size: .4rem;
+    }
+    .search{
+      border: #f5f5f5 solid .005rem;
+      border-radius: .1rem;
+      margin: 0 .3rem;
+      padding: .1rem .05rem;
+      display: flex;
+      align-items: center;
+      flex: 1;
+      background-color: white;
+
+      i{
+        font-size: .35rem;
+        vertical-align: center;
+        &:nth-of-type(1){
+          margin:0 .2rem 0 .15rem;
+        }
+      }
+      input{
+        border: none;
+        flex: 1;
+      }
+    }
+  }
+  .select{
+    ul{
+      display: flex;
+      margin-bottom: 0;
+      li{
+        flex: 1;
+        text-align: center;
+        a{
+          box-sizing: border-box;
+          display: block;
+          padding: .25rem 0;
+          color: #666;
+
+          &.active{
+            color: #F01E00;
+            border-bottom: #F01E00 solid .005rem;
+          }
+        }
+      }
+    }
+}
+  .list{
+    padding-left: .1rem;
+    background: #f9f9f9;
+    .listDetail{
+      padding-top: .1rem;
+      display: flex;
+      .listLeft{
+        width: 25%;
+        margin-right: .2rem;
+        position: relative;
+        img{
+          width: 100%;
+        }
+        .rightTop{
+          position: absolute;
+          top:0;
+          right:0;
+          span{
+            display: block;
+            background-color: #a94af4;
+            box-sizing: border-box;
+            width: .7rem;
+            padding: 0 .1rem;
+            text-align: center;
+            em{
+              font: inherit;
+              color: white;
+              font-size: .01rem;
+              display: block;
+              transform:scale(.7);
+            }
+          }
+          i{
+          display: block;
+            border-right: .35rem solid transparent;
+            border-left: .35rem solid transparent;
+            border-bottom: 0rem solid transparent;
+            border-top: .1rem solid #a94af4;
+          }
+        }
+      }
+      .listRight{
+        flex: 1;
+        border-bottom: #D1D1d1 solid .002rem;
+        padding-bottom: .05rem;
+        p{
+          margin-bottom: 0;
+        }
+        display: flex;
+        flex-direction: column;
+        .top{
+          flex: 1;
+          p{
+            color: #999999;
+            font-size: .15rem;
+            &:nth-of-type(1){
+              color: #333;
+              font-size: .3rem;
+            }
+          }
+        }
+        .bottom{
+          display: flex;
+          //align-items: center;
+          p{
+            flex: 1;
+            color: #f45353;
+            font-size: .32rem;
+            font-weight: normal;
+            span{
+              font-size: .25rem;
+            }
+          }
+          div{
+            position: relative;
+            margin-right: .2rem;
+            ul{
+              display: flex;
+              margin-top: .1rem;
+              margin-bottom: 0;
+              li{
+                margin-right: .05rem;
+                &:last-child{
+                  margin-right: 0;
+                }
+              }
+              i{
+                font-size: .2rem;
+                color: #D1D1d1;
+              }
+              &.yellow{
+                width: 72%;
+                overflow: hidden;
+                white-space: nowrap;
+                position: absolute;
+                top:0;
+                left: 0;
+                i{
+                  color: #ffcd40;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  button{
+    margin: .2rem auto;
+    display: block;
+    padding: 0 .4rem;
+  }
+}
+
+
+//会员
+.VIPBox {
+  height: 100%;
+  background: #f2f2f2;
+  .titleName {
+    font-size: .4rem;
+    width: 100%;
+    height: 1.2rem;
+    text-align: center;
+    line-height: 1.2rem;
+    span {
+      display: inline-block;
+      width: 1.2rem;
+      height: 100%;
+      font-size: .5rem;
+
+    }
+    h1 {
+      width: 5rem;
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
+  .VIPTitle {
+    border-top: 1px solid #f7f7f7;
+    height: 3.08rem;
+    margin-bottom: .3rem;
+    img {
+      width: 3rem;
+      height: 2.5rem;
+      margin: .3rem .35rem;
+    }
+  }
+  .VIPCont {
+    background: #FFFFFF;
+    .title {
+      border-left: 3px solid red;
+      margin-left: .2rem;
+      position: relative;
+      height: 1.6rem;
+
+      img {
+        display: inline-block;
+        width: .5rem;
+        height: .25rem;
+        position: absolute;
+        top: -.23rem;
+        left: .8rem;
+      }
+      h3 {
+        margin-left: .3rem;
+        color: #2a2a2a;
+        font-size: 14px;
+        margin-bottom: 0;
+        height: .7rem;
+        line-height: 1.1rem;
+        vertical-align: center;
+
+      }
+      p {
+        margin-left: .3rem;
+        font-size: 12px;
+        color: #D5D5D5;
+        margin-bottom: 0;
+        width: 4.4rem;
+        display: inline-block;
+
+      }
+      span {
+        float: right;
+        height: .56rem;
+        line-height: .56rem;
+        background: red;
+        color: #FFFFFF;
+        font-size: .34rem;
+        width: 2rem;
+        position: relative;
+        padding-left: .3rem;
+        i {
+          background: red;
+          display: inline-block;
+          height: 100%;
+          width: .5rem;
+          position: absolute;
+          top: 0;
+          left: -.25rem;
+          border-radius: 50%;
+        }
+      }
+    }
+    .price {
+      ul {
+        height: 2.14rem;
+        margin-top: .5rem;
+        li {
+          float: left;
+          width: 28%;
+          height: 1.8rem;
+          margin: 0 .2rem;
+          text-align: center;
+          border: 1px solid #D5D5D5;
+          p {
+            margin: 0 auto;
+            height: .9rem;
+            line-height: .9rem;
+          }
+        }
+      }
+    }
+
+    .VIPeEquity {
+      position: relative;
+      h3 {
+        text-align: center;
+        font-size: .35rem;
+        color: #666;
+      }
+      span {
+        position: absolute;
+        right: .3rem;
+        top: 0;
+      }
+      ul {
+        li {
+          float: left;
+          width: 33%;
+          text-align: center;
+          height: 2rem;
+          padding-top: .5rem;
+          img {
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+      ;
+      }
+    }
+  }
+  .poster {
+    border-top: 1px solid #f7f7f7;
+    h3 {
+      height: 1rem;
+      line-height: 1rem;
+      text-align: center;
+      font-size: .35rem;
+      margin-bottom: 0;
+      color: #666;
+
+    }
+    ul {
+      li {
+        width: 33%;
+        height: 3rem;
+        float: left;
+        text-align: center;
+        margin-bottom: 1rem;
+        img {
+          width: 2rem;
+          height: 3rem;
+        }
+        p {
+          height: .7rem;
+          line-height: .7rem;
+        }
+      }
+    }
+  }
+}
+
+//维修
+.maintainBox {
+  height: 100%;
+  background: #f2f2f2;
+  text-align: center;
+  .titleBox {
+    background: #D1D1d1;
+    border-bottom: 1px solid #D5D5D5;
+    .title {
+      display: inline-block;
+      width: 5.2rem
+    }
+  }
+  .conBox {
+    margin: 4.5rem 0;
+    .con {
+      p {
+        margin-bottom: 0;
+        font-size: .35rem;
+      }
+    }
+    .footer {
+      background: red;
+      position: fixed;
+      bottom: -.4rem;
+      left: 6px;
+      width: 7.20rem;
+      height: 1.2rem;
+      line-height: 1.2rem;
+      text-align: center;
+      font-size: .4rem;
+    }
+  }
+}
+
+//Letv
+.LetvBox {
+  header {
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    background: cornflowerblue;
+    p {
+      font-size: .5rem;
+      color: #FFFFFF;
+      margin-bottom: 0;
+      i{
+        margin: 0 .3rem 0 .2rem;
+      }
+      img {
+        display: inline-block;
+        width: 35%;
+        height: .45rem;
+        margin: 0;
+      }
+    }
+  }
+  .nav {
+    span {
+      width: .8rem;
+      height: .7rem;
+      line-height: .7rem;
+      font-size: .32rem;
+      text-align: center;
+      color: #2a2a2a;
+      margin: .2rem;
+    }
+  }
+  .banner {
+    margin: 10px auto;
+  }
+  .list {
+
+    .h {
+      width: 3.50rem;
+      height: .68rem;
+      font-size: .4rem;
+      margin: .34rem;
+      font-style: revert;
+    }
+    ul {
+      background: #f2f2f2;
+
+      li {
+        padding: .3rem 0;
+        margin: .1rem;
+        border-radius: 20%;
+        img {
+          margin-left: .2rem;
+          display: inline-block;
+          width: 95%;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        }
+        div {
+          margin-left: .2rem;
+          padding: .1rem;
+          width: 95%;
+          background: #FFFFFF;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          h3 {
+            font-size: .33rem;
+            font-weight: bold;
+          }
+          p {
+            font-size: .3rem;
+          }
+        }
+      }
+    }
+  }
+}
