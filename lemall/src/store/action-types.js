@@ -42,4 +42,8 @@ export const HOME_QUERY_HOT = 'HOME_QUERY_HOT';
 export const HOME_QUERY_BIG = 'HOME_QUERY_BIG';
 export const HOME_QUERY_ACCESSORIES = 'HOME_QUERY_ACCESSORIES';
 
+/*商城排序*/
+export const HOME_SORT="HOME_SORT";
+
+export const HOME_SORT_CLICK="HOME_SORT_CLICK";
 

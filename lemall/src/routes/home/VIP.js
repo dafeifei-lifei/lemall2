@@ -1,6 +1,6 @@
 import React from 'react'
 import {Icon} from 'antd'
-
+import {Link} from "react-router-dom"
 export default class VIP extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -10,7 +10,7 @@ export default class VIP extends React.Component {
     render() {
         return <div className={'VIPBox'}>
             <div className={'titleName clearfix'}>
-                <span><Icon type={'left'} /></span>
+                <span><Icon type={'left'} onClick={()=>{this.props.history.go(-1)}}/></span>
                 <h1>乐视会员购买</h1>
                 <span><Icon type={'ellipsis'}/></span>
             </div>

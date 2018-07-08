@@ -39,13 +39,13 @@ class Common extends React.Component {
             <section className={'supertvBox'}>
                 {/*通用头*/}
                 <header>
-                    <Link to={'/navSearch'}>
                         <Icon type={'left'} style={{fontSize: '.4rem', marginLeft: '.2rem'}} onClick={()=>{
                             this.props.history.push('/home')
                         }}/>
+                        <Link to={"/navSearch"}>
                         <Search placeholder="X55L" style={{width: '5rem', margin: '.2rem .5rem'}}></Search>
+                        </Link>
                         <Icon type={'ellipsis'} style={{fontSize: '.4rem'}}/>
-                    </Link>
                 </header>
                 <div className={'souBox clearfix'}>
                     {/*左边导航*/}

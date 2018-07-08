@@ -1,5 +1,5 @@
 import * as TYPES from "./../action-types.js"
-import {queryBanner,queryBanner2,queryHot,queryBig,queryFitting} from '../../api/home';
+import {queryBanner,queryBanner2,queryHot,queryBig,queryFitting,mallSort} from '../../api/home';
 
 let home={
      async queryBanner(){
@@ -32,6 +32,12 @@ let home={
             payload:await queryFitting()
         }
     },
+    async querySort(payload){
+         return{
+             type:TYPES.HOME_SORT,
+             result: await mallSort(payload)
+         }
+    }
 
 
 };

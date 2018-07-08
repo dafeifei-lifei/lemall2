@@ -24,7 +24,7 @@ class Banner extends React.Component {
             <Link to={'/home'} className={'logo'}><span></span></Link>
             <Link to={'/shopCart'} className={'shopCart'}><Icon type={'shopping-cart'}/></Link>
             <Link to={'/Personal'} className={'personal'}><Icon type={'user'}/></Link>
-            <Link to={'/search'} className={'search'}><span><Icon type={'search'}/>X43L</span></Link>
+            <Link to={'/navSearch'} className={'search'}><span><Icon type={'search'}/>X43L</span></Link>
         </div>
 
     }

@@ -11,7 +11,7 @@ export default class Letv extends React.Component {
         return <div className={'LetvBox'}>
             <header>
                 <p className={'clearfix'}>
-                    <Icon type={'menu-unfold '}/>
+                    <Icon type={'menu-unfold '} onClick={()=>{this.props.history.go(-1)}}/>
                     <img src="https://static-bbs.letv.com/image/touch/images/logo.png?0305);" alt=""/>
                     <Icon type={'ellipsis'} style={{
                         float:'right',
