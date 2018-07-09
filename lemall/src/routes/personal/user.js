@@ -26,7 +26,7 @@ class User extends React.Component {
         let canshu = ["banner","","bigScreen","fitting","list","classify"];
 
         if(this.props.isLogin){//=>已经登录了，获取个人信息
-            // await this.props.getUserData();
+            await this.props.getUserData();
             await this.props.queryUnpay(canshu);
             await this.props.queryPay(canshu);
         }
