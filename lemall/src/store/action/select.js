@@ -1,7 +1,6 @@
 import * as TYPES from "./../action-types.js"
 import {selectData,fenleiData} from "../../api/select"
 
-console.log(TYPES);
 let select = {
 /*分类结构*/
     async fenleiData(){

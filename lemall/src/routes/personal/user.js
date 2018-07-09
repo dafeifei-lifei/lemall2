@@ -35,7 +35,6 @@ class User extends React.Component {
     }
 
     render() {
-        console.log(this.props.userName);
         return <div className="userBox">
             {this.props.isLogin?<div className="out" onClick={()=>{this.out()}}>退出</div>:""}
             <div className="person">

@@ -12,7 +12,6 @@ class Parts extends React.Component{
         let data = fenlei;
         if(!data)return "";
         let x = data[0]['精品配件'];
-        console.log(x);
         return <div className={'partsBox'}>
             <ul>
                 {x.map((item,index)=>{

@@ -22,7 +22,6 @@ function personal(state=INIT_STATE,action) {
             let personalResult=action.result;
             if(personalResult.code===0){
                 state.userName=personalResult.data.name;
-                console.log(state.userName);
             }
             break;
         case TYPES.PERSONAL_LOGIN_LOGINING:

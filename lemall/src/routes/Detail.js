@@ -370,7 +370,6 @@ class Detail extends React.Component {
         })
     };
     loadingMore=()=>{
-        console.log("ok");
         this.setState({
             endIndex:this.state.endIndex+10
         })
