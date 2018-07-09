@@ -10,8 +10,6 @@ function shopCart(state=INIT_STATE,action) {
         case TYPES.SHOP_UNPAY:
             if (parseFloat(action.result.code) === 0) {
                 state.shopCart.unpay = action.result.data;
-                //=>给每一条数据加一个选中的属性
-                console.log("fsfs");
                 state.shopCart.unpay = state.shopCart.unpay.map(item => {
                     return {...item, check: true};
                 });
@@ -21,11 +19,10 @@ function shopCart(state=INIT_STATE,action) {
 
         case TYPES.ADD_SHOP:
             if(action.unPayCart instanceof Array){
-                state.shopCart.unpay.push(...action.unPayCart);
+                state.shopCart.unpay.push({...action.unPayCart,check:true});
             }else{
                 state.shopCart.unpay.push(action.unPayCart);
             }
-            console.log(state.shopCart.unpay,22);
             break;
 
         case TYPES.REMOVE_SHOP:
@@ -39,9 +36,7 @@ function shopCart(state=INIT_STATE,action) {
             break;
 
         case TYPES.SHOP_PAY:
-            console.log(action.result);
             if (parseFloat(action.result.code) === 0) {
-                console.log(action.result.data);
                 state.shopCart.pay = action.result.data;
                 // state.shopCart.unpay = [];
                 // state.Cart=[];

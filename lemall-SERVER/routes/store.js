@@ -56,14 +56,13 @@ route.get('/info', (req, res) => {
         idlx1 = req.query.idlx,
         personID = req.session.personID,
         storeList = [];
-        console.log(idlx1,state,personID,req.storeDATA);
+
     let data = [];
 
     for(let key in idlx1) {
         if (personID) {
             //=>登录状态下是从JSON文件中获取：在STORE.JSON中找到所有personID和登录用户相同的(服务器从SESSION中可以获取用户ID的)
             req.storeDATA.forEach(item => {
-                console.log(parseFloat(item.personID),personID,parseFloat(item.state),state,item.idlx,idlx1[key]);
                 if (parseFloat(item.personID) === personID && parseFloat(item.state) === state&&item.idlx===idlx1[key]) {
                     storeList.push({
                         currentId: parseFloat(item.currentId),
@@ -72,7 +71,6 @@ route.get('/info', (req, res) => {
                     });
                 }
             });
-            console.log(storeList);
         } else {
             if (state === 0) {
                 storeList = req.session.storeList || [];
@@ -86,15 +84,12 @@ route.get('/info', (req, res) => {
     storeList.forEach(({currentId, storeID} = {}) => {
 
         let item = req.shoppingDATA.find((item,index) => {
-            // console.log(parseFloat(item.id),parseFloat(currentId),item.idlx===idlx1[key],item.idlx,idlx1[key],index);
             return parseFloat(item.id) === parseFloat(currentId)&&item.idlx===idlx1[key]
         });
-        // item.storeID = storeID;
         if(!item)return;
         data.push(item);
     });
     }
-    console.log(data,storeList);
     res.send({
         code: 0,
         msg: 'OK!',

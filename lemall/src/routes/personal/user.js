@@ -4,6 +4,7 @@ import {Icon} from "antd"
 import {Link} from "react-router-dom"
 import action from "../../store/action/index.js"
 import {out} from "./../../api/personal.js"
+
 class User extends React.Component {
     constructor() {
         super();
@@ -11,10 +12,11 @@ class User extends React.Component {
             isLogin: null
         }
     }
-  
-    async componentDidMount() {
+
+    async componentWillMount() {
+        document.documentElement.scrollTop=0;
         //=>之前如果已经判断过是否登录了，不再重新判断
-        if(this.props.isLogin===true){
+        if (this.props.isLogin === true) {
             this.setState({
                 isLogin: this.props.isLogin
             });
@@ -23,34 +25,33 @@ class User extends React.Component {
 
         await this.props.checkLogin();
 
-        let canshu = ["banner","","bigScreen","fitting","list","classify"];
+        let canshu = ["banner", "", "bigScreen", "fitting", "list", "classify"];
 
-        if(this.props.isLogin){//=>已经登录了，获取个人信息
-            // await this.props.getUserData();
+        if (this.props.isLogin) {//=>已经登录了，获取个人信息
+            await this.props.getUserData();
             await this.props.queryUnpay(canshu);
             await this.props.queryPay(canshu);
         }
-
         this.setState({
             isLogin: this.props.isLogin
         })
-
-
     }
 
     render() {
 
         return <div className="userBox">
-            {this.props.isLogin?<div className="out" onClick={()=>{this.out()}}>退出</div>:""}
+            {this.props.isLogin ? <div className="out" onClick={() => {
+                this.out()
+            }}>退出</div> : ""}
             <div className="person">
                 <div className="pic">
                     <img src="http://img2-lemall.letvimg.com/wap/20160318/default/4942896749464113" alt=""/>
                     <img src="https://img3-lemall.letvimg.com/wap/20160318/default/4943586322834628"/>
                 </div>
                 <div className="unlogin">
-                    <p>
-                        {this.props.isLogin ? <p>{this.props.userName}</p> : <Link to="/personal/login">登录</Link>}
-                    </p>
+                    {this.props.isLogin ? <p style={{fontSize: ".35rem"}}>{this.props.userName}</p> :
+                        <Link to="/personal/login">登录</Link>}
+
                     {!this.props.isLogin ? <p>登录后查看个人信息</p> : <p><Icon type="mobile"></Icon>已与手机绑定</p>}
 
                 </div>
@@ -183,9 +184,10 @@ class User extends React.Component {
             <h3>©2017乐视商城</h3>
         </div>
     }
-    out=()=>{
+
+    out = () => {
         this.props.outLogin();
     }
 }
 
-export default connect(state => ({...state.personal,...state.shopCart}), {...action.personal,...action.shopCart})(User);
+export default connect(state => ({...state.personal, ...state.shopCart}), {...action.personal, ...action.shopCart})(User);

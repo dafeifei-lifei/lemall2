@@ -10,7 +10,7 @@ class NavBottom extends React.Component {
 
     render() {
         let {location: {pathname}} = this.props,
-            ary = ["/personal/login", "/personal/register", "/shopCart","/detail","/home/tv"];
+            ary = ["/personal/login", "/personal/register", "/shopCart","/detail","/home/tv","/personal/order",'/personal/order',"/personal/order","/personal/order","/personal/service","/personal/bean","/personal/ecology","/personal/coupon"];
         if (ary.includes(pathname)) return "";
         return <footer className="footerNavBox">
             <NavLink to={"/home"} exact><Icon type={"home"}/><span>首页</span></NavLink>

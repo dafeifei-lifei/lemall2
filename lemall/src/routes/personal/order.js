@@ -47,7 +47,6 @@ class Order extends React.Component {
                 <div className="orderList">
 
                     {
-
                         ary[this.state.clickIndex].map((item, index) => {
                             return <div className="order" key={index}>
                                 <div className="title">
@@ -55,7 +54,7 @@ class Order extends React.Component {
                                 </div>
                                 <div className="content">
                                     <div className="pic"><img
-                                        src="https://img0-lemall.letvimg.com/le-cloud/s-pc-oa/resource/img/201712/1513647837847.jpg"
+                                        src={item.smallpic}
                                         alt=""/></div>
                                     <div className="buyDetail">
                                         <p>类型：{item.name}</p>

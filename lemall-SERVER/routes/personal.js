@@ -98,5 +98,27 @@ route.get('/out', (req, res) => {
     req.session.personID = null;
     res.send({code: 0, msg: 'OK!'});
 });
+route.get("/checkingPhone",(req,res)=>{
+    let {phone} = req.query;
+    let item = req.personalDATA.find((item,index)=>{
+        return item.phone===phone;
+    });
+    if(item){
+        res.send({code:1,msg:"NO",data:"当前电话已被注册"});
+    }else{
+       res.send({code:0,msg:"ok",data:"欢迎注册"});
+    }
+});
+route.get("/checkingName",(req,res)=>{
+    let {name} = req.query;
+    let item = req.personalDATA.find((item,index)=>{
+        return item.name===name;
+    });
+    if(item){
+        res.send({code:1,msg:"NO",data:"当前用户名已存在"});
+    }else{
+        res.send({code:0,msg:"ok",data:"欢迎注册"});
+    }
+});
 
 module.exports = route;

@@ -47,7 +47,7 @@ class Television extends React.Component {
                 <ul>
                     {
                         data.map((item, index) => {
-                            return <li onClick={this.handleClick.bind(this, index)}>
+                            return <li onClick={this.handleClick.bind(this, index)} key={index}>
                                 <a href="javascript:;"
                                    className={clickIndex === index ? "active" : ""}>{item}{index === 2 ?
                                     <Icon type={priceUpDown ? "arrow-up" : "arrow-down"}/> : (index === 3 ?
@@ -62,7 +62,7 @@ class Television extends React.Component {
                 {
                     this.dataMall.map((item, index) => {
                         let {smallpic, bigpic, describe, price, time, title, type, typeName, evaluate,id,idlx} = item;
-                        return <Link to={`/detail/?idlx=${idlx}&id=${id}`}>
+                        return <Link to={`/detail/?idlx=${idlx}&id=${id}`} key={index}>
                             <div className="listDetail" key={index}>
                                 <div className="listLeft">
                                     <img src={smallpic} alt={title}/>
@@ -151,7 +151,6 @@ class Television extends React.Component {
         if (this.state.clickIndex === 2) {
             this.state.priceUpDown? this.dataMall = this.props.dataPriceUp : this.dataMall = this.props.dataPriceDown;
         }
-        console.log(this.state.priceUpDown);
         if (this.state.clickIndex === 3) {
             this.state.evaluateUpDown ? this.dataMall = this.props.dataEvaluateUp : this.dataMall = this.props.dataEvaluateDown;
 

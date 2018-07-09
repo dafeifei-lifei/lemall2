@@ -28,7 +28,7 @@ class Login extends React.Component {
                 </div>
                 <p>一个帐号玩转所有乐视服务</p>
             </div>
-            <div className="loginMessage">
+            <div className="loginMessage" onBlur={this.checking}>
                 <div className="userName">
                     <Icon type="user"></Icon>
                     <input type="text" placeholder="邮箱/电话" ref="userName"/>
@@ -76,8 +76,7 @@ class Login extends React.Component {
             password = md5(passValue.value);
 
         if (!name || !passValue.value) {
-
-            /*this.setState({
+            this.setState({
                 isShow:!this.state.isShow,
                 tip:"请输入用户名和密码！"
             });
@@ -85,7 +84,7 @@ class Login extends React.Component {
                 this.setState({
                     isShow:!this.state.isShow
                 });
-            },2000);*/
+            },2000);
             return;
         }
         await this.props.logining({name, password});
@@ -95,7 +94,7 @@ class Login extends React.Component {
             this.props.history.go(-1);
         } else {
             userName.value = passValue.value = "";
-            /*this.setState({
+            this.setState({
                 isShow:!this.state.isShow,
                 tip:"用户名不存在，快去注册吧！"
             });
@@ -103,7 +102,7 @@ class Login extends React.Component {
                 this.setState({
                     isShow:!this.state.isShow
                 });
-            },2000);*/
+            },2000);
         }
     };
     checking = (ev) => {

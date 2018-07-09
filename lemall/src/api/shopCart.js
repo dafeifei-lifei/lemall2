@@ -2,7 +2,6 @@ import axios from "./index.js"
 
 //获取服务器购物车信息
 export function queryShopCart(state = 0,idlx) {
-    console.log(idlx);
     return axios.get('/store/info', {
         params: {
             state,

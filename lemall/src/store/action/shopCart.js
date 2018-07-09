@@ -25,7 +25,6 @@ let shopCart={
     } ,
 
     handleSelect(mode) {
-        console.log(mode);
         return {
             type: TYPES.HEANLE_SELECT,
             mode

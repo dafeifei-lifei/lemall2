@@ -25,33 +25,15 @@ class ShopCart extends React.Component {
     }
 
     async componentDidMount(){
-        
+        document.documentElement.scrollTop=0;
         let result = await checkLogin();
-        // this.props.biaoshi(this.state.flag);
-
-        // if (parseFloat(result.code) === 0&&this.props.flag===true) {
-        //     let canshu = ["banner","hotSale","bigScreen","list","classify"];
-        //     await this.props.queryUnpay(canshu);
-        //     console.log(31);
-        //     this.props.addShop(this.props.Cart.slice(this.props.shopCart.unpay.length));
-        //
-            // this.props.addShop(this.props.Cart);
-
-            // this.props.biaoshi(false);
-        //
-        // }else if(this.props.shopCart.unpay.length!==this.props.Cart.length){
             if(this.props.shopCart.unpay.length<this.props.Cart.length) {
                 this.props.addShop(this.props.Cart.slice(this.props.shopCart.unpay.length));
            }
-        // }
-      
     }
 
     render() {
-        console.log(this);
         let {count,state,checkAll,unpay} = this.props.shopCart;
-      
-
         let obj = {},cur ;
         for(let i=0;i<unpay.length;i++){
             cur = unpay[i].id;
@@ -61,8 +43,6 @@ class ShopCart extends React.Component {
                 obj[cur]=1;
             }
         }
-        console.log(obj);       //{1:2,4:1}
-        // var ary = Object.keys(obj);      //["1","4"]
         let newunpay = [];
         for (let attr in obj){
             newunpay.push(
@@ -74,7 +54,6 @@ class ShopCart extends React.Component {
                  })
             );
         }
-        console.log(newunpay);
         unpay = newunpay;
         return <div className={"shopCartBox"}>
             <div className={this.state.dialog?'dialogShoe':"dialog"}></div>
@@ -91,13 +70,11 @@ class ShopCart extends React.Component {
                 if(item.describe){
                     dec = item.describe;
                 }
-                console.log(name);
                 return <div className={"shopBody"} key={index}>
                     <div><span>乐视自营</span></div>
                     <div>
                         <div className={"select_check"}>
-                            {/*checked={!!state}*/}
-                            <input type={"checkbox"} id={"ipt"}  checked={check}  />
+                            <input type={"checkbox"} id={"ipt"}  checked={check}/>
                             <label htmlFor={"ipt"} onClick={this.props.handleSelect.bind(this,id)}><Icon type={"check"} /></label>
                         </div>
                         <div>
@@ -161,13 +138,8 @@ class ShopCart extends React.Component {
             return parseFloat(item.id) === parseFloat(id) && item.idlx === idlx;
         });
         this.props.classify_cart_remove(data);
-           console.log(this.refs["value"+id+idlx]);
         this.refs["value"+id+idlx].innerHTML=parseInt(this.refs["value"+id+idlx].innerHTML)-1;
         this.props.removeShop(data);
-        // this.setState({
-        //     count:this.refs["value"+id+idlx].innerHTML,
-        // });
-
     };
 
     plus= async (id,idlx,index,count,price) =>{

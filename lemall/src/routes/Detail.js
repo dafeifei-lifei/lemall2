@@ -42,10 +42,9 @@ class Detail extends React.Component {
             endIndex:9
         }
     }
-    componentWillMount(){
+
+    componentWillMount() {
         document.documentElement.scrollTop=0;
-    }
-    componentDidMount() {
         window.onscroll = () => {
             let scrollT = document.documentElement.scrollTop;
             if (scrollT > 1220) {
@@ -329,7 +328,7 @@ class Detail extends React.Component {
         this.timer = setTimeout(() => {
             this.alertBox.classList.remove("alertBox");
             this.isRun = false;
-        }, 10);
+        }, 1500);
     }
 
 
