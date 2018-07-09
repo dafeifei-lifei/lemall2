@@ -36,6 +36,8 @@ export const PERSONAL_REGISTER="PERSONAL_REGISTER";
 //=>存储用户信息
 export const PERSONAL_USERNAME="PERSONAL_USERNAME";
 
+//=>第一次登录，存储购物车中未支付的信息
+export const PERSONAL_SAVEUNPAY="PERSONAL_SAVEUNPAY";
 
 //=>退出登录
 export const PERSONAL_OUT="PERSONAL_OUT";

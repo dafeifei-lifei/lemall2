@@ -23,9 +23,11 @@ class User extends React.Component {
             return;
         }
         await this.props.checkLogin();
-        let canshu = ["banner", "", "bigScreen", "fitting", "list", "classify"];
+        let canshu = ["banner", "hotSale", "bigScreen", "fitting", "list", "classify"],Cart;
         if(this.props.isLogin){
             await this.props.getUserData();
+            Cart = this.props.Cart;
+            this.props.saveUnpay(Cart);
             await this.props.queryUnpay(canshu);
             await this.props.queryPay(canshu);
         }
@@ -46,15 +48,7 @@ class User extends React.Component {
                     <img src="https://img3-lemall.letvimg.com/wap/20160318/default/4943586322834628"/>
                 </div>
                 <div className="unlogin">
-
-                    {this.props.isLogin ? <p style={{fontSize: ".35rem"}}>{this.props.userName}</p> :
-                        <Link to="/personal/login">登录</Link>}
-
-                    <p>
-                        <div>
-                        {this.props.isLogin ? <p>{this.props.userName}</p> : <Link to="/personal/login">登录</Link>}
-                        </div>
-                    </p>
+                    {this.props.isLogin ? <p style={{fontSize: ".35rem"}}>{this.props.userName}</p> : <Link to="/personal/login">登录</Link>}
                     {!this.props.isLogin ? <p>登录后查看个人信息</p> : <p><Icon type="mobile"></Icon>已与手机绑定</p>}
 
                 </div>
@@ -193,4 +187,4 @@ class User extends React.Component {
     }
 }
 
-export default connect(state => ({...state.personal, ...state.shopCart}), {...action.personal, ...action.shopCart})(User);
+export default connect(state => ({...state.personal, ...state.shopCart,...state.detail}), {...action.personal, ...action.shopCart})(User);

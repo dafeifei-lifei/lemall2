@@ -19,9 +19,14 @@ function shopCart(state=INIT_STATE,action) {
 
         case TYPES.ADD_SHOP:
             if(action.unPayCart instanceof Array){
-                state.shopCart.unpay.push({...action.unPayCart,check:true});
+                action.unPayCart.forEach((item)=>{
+                    item.check=true;
+                    state.shopCart.unpay.push(item);
+                });
+                console.log(state.shopCart.unpay);
             }else{
-                state.shopCart.unpay.push({...action.unPayCart,check:true});
+                action.unPayCart.check=true;
+                state.shopCart.unpay.push(action.unPayCart);
             }
             break;
 

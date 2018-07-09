@@ -10,7 +10,8 @@ class Login extends React.Component {
         super();
         this.state = {
             isShow: false,
-            tip:"请输入正确的用户名！"
+            tip: "请输入正确的用户名！",
+            pass: false
         }
     }
 
@@ -35,8 +36,12 @@ class Login extends React.Component {
                 </div>
                 <div className="userPassword">
                     <Icon type="lock"></Icon>
-                    <input type="password" placeholder="密码" ref="password"/>
-                    <Icon type="eye-o"></Icon>
+                    <input type={this.state.pass ? "text" : "password"} placeholder="密码" ref="password"/>
+                    <Icon type={this.state.pass ? "eye" : "eye-o"} eye-o onClick={() => {
+                        this.setState({
+                            pass: !this.state.pass
+                        })
+                    }}></Icon>
                 </div>
             </div>
             <div className="checkIn">
@@ -77,14 +82,14 @@ class Login extends React.Component {
 
         if (!name || !passValue.value) {
             this.setState({
-                isShow:!this.state.isShow,
-                tip:"请输入用户名和密码！"
+                isShow: !this.state.isShow,
+                tip: "请输入用户名和密码！"
             });
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.setState({
-                    isShow:!this.state.isShow
+                    isShow: !this.state.isShow
                 });
-            },2000);
+            }, 2000);
             return;
         }
         await this.props.logining({name, password});
@@ -95,44 +100,44 @@ class Login extends React.Component {
         } else {
             userName.value = passValue.value = "";
             this.setState({
-                isShow:!this.state.isShow,
-                tip:"用户名不存在，快去注册吧！"
+                isShow: !this.state.isShow,
+                tip: "用户名不存在，快去注册吧！"
             });
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.setState({
-                    isShow:!this.state.isShow
+                    isShow: !this.state.isShow
                 });
-            },2000);
+            }, 2000);
         }
     };
     checking = (ev) => {
         let target = ev.target,
             reg = /^((\d{11})|(\w+((-\w+)|(.\w+))@[A-Za-z0-9)]+([-.][A-Za-z0-9]+)*(\.[A-Za-z0-9]+)))$/i;
         if (target.parentNode.className === "userName") {
-            if (!reg.test(target.value)&&target.value) {
+            if (!reg.test(target.value) && target.value) {
                 this.setState({
-                    isShow:!this.state.isShow,
-                    tip:"请输入正确的用户名！"
+                    isShow: !this.state.isShow,
+                    tip: "请输入正确的用户名！"
                 });
                 target.value = "";
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.setState({
-                        isShow:!this.state.isShow
+                        isShow: !this.state.isShow
                     });
-                },2000);
+                }, 2000);
             }
         } else {
-            if (!/^\w{8}$/i.test(target.value)&&target.value) {
+            if (!/^\w{8}$/i.test(target.value) && target.value) {
                 this.setState({
-                    isShow:!this.state.isShow,
-                    tip:"请输入8位密码！"
+                    isShow: !this.state.isShow,
+                    tip: "请输入8位密码！"
                 });
                 target.value = "";
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.setState({
-                        isShow:!this.state.isShow
+                        isShow: !this.state.isShow
                     });
-                },2000);
+                }, 2000);
             }
         }
     }
