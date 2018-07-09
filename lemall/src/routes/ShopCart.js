@@ -14,36 +14,68 @@ class ShopCart extends React.Component {
         super(props);
         this.state={
             state:this.props.shopCart.state,
-            count:1,
             first:0,
             price:0,
-            allPrice:0
+            allPrice:0 ,
+            count:1,
+            nowPrice:0 ,
+            flag:true //是否从后台获取数据
         }
     }
 
     async componentDidMount(){
+        
         let result = await checkLogin();
-        if (parseFloat(result.code) === 0) {
-            await this.props.queryUnpay("classify");
-            await this.props.addShop(this.props.Cart);
-            console.log(this.props.shopCart.unpay);
-        }else if(this.props.shopCart.unpay.length===0){
-        this.props.addShop(this.props.Cart);
-        }
-        this.setState({
-            first:1
-        })
+        // this.props.biaoshi(this.state.flag);
+
+        // if (parseFloat(result.code) === 0&&this.props.flag===true) {
+        //     let canshu = ["banner","hotSale","bigScreen","list","classify"];
+        //     await this.props.queryUnpay(canshu);
+        //     console.log(31);
+        //     this.props.addShop(this.props.Cart.slice(this.props.shopCart.unpay.length));
+        //
+            // this.props.addShop(this.props.Cart);
+
+            // this.props.biaoshi(false);
+        //
+        // }else if(this.props.shopCart.unpay.length!==this.props.Cart.length){
+            if(this.props.shopCart.unpay.length<this.props.Cart.length) {
+                this.props.addShop(this.props.Cart.slice(this.props.shopCart.unpay.length));
+           }
+        // }
+      
     }
 
     render() {
         console.log(this);
         let {count,state,checkAll,unpay} = this.props.shopCart;
-        // let {Cart,shopCart:[unpay]} =this.props;
-        // console.log(Cart,unpay);
-        // let allShop = [...Cart,...unpay];
-         console.log(unpay);
+      
 
+        let obj = {},cur ;
+        for(let i=0;i<unpay.length;i++){
+            cur = unpay[i].id;
+            if(obj[cur]){
+                obj[cur]++;
+            }else{
+                obj[cur]=1;
+            }
+        }
+        console.log(obj);       //{1:2,4:1}
+        // var ary = Object.keys(obj);      //["1","4"]
+        let newunpay = [];
+        for (let attr in obj){
+            newunpay.push(
+                unpay.find((item,index)=>{
+                    if(item.id==attr){
+                        item.count = parseInt(obj[attr]);
+                        return true;
+                    }
+                 })
+            );
+        }
 
+        console.log(newunpay);
+        unpay = newunpay;
         return <div className={"shopCartBox"}>
             <div className={"shopHead"}>
                 <Icon type="left" onClick={() => this.props.history.go(-1)}/>
@@ -51,8 +83,10 @@ class ShopCart extends React.Component {
                 <Icon type="form"/>
             </div>
             {unpay.length===0?<Alert type="warning" description="当前还没有任何课程，快去购买吧"/>:null}
+
             {unpay.map((item,index)=>{
-                let {name,smallpic,price,dec,check,id,idlx} = item;
+                console.log(item);
+                let {name,smallpic,price,dec,check,id,idlx,count} = item;
                 console.log(name);
                 return <div className={"shopBody"} key={index}>
                     <div><span>乐视自营</span></div>
@@ -73,11 +107,11 @@ class ShopCart extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <span className={"span1"}>¥{price*this.state.count}</span>
+                            <span className={"span1"}>¥{count*price}</span>
                             <p>
-                                <span onClick={this.minus.bind(this,id,idlx,index)}><Icon type="minus"/></span>
-                                <span>1</span>
-                                <span ref={index} onClick={this.plus.bind(this,id,idlx,index)} ><Icon type="plus"/></span>
+                                <span onClick={this.minus.bind(this,id,idlx,index,count,price)}><Icon type="minus"/></span>
+                                <span ref={"value"+id+idlx} id={index}>{count}</span>
+                                <span ref={index} onClick={this.plus.bind(this,id,idlx,index,count,price)} ><Icon type="plus"/></span>
                             </p>
                         </div>
                     </div>
@@ -112,37 +146,44 @@ class ShopCart extends React.Component {
         </div>
     }
 
-    minus= async (id,idlx,index)=>{
-        // let {count,state} =  this.props.shopCart;
-        // if(count<1){
-        //     return;
-        // }
-        // count-=1;
-        // this.props.shopCartCount(count,state);
-        await this.props.add({id:id,idlx:idlx});
+    minus= async (id,idlx,index,count,price)=>{
+
+        if( this.refs["value"+id+idlx].innerHTML<=1)return;
+
+        await this.props.remove({id:id,idlx:idlx});
+
+        let all = [...this.props.select,...this.props.dataBanner,...this.props.dataHot,...this.props.dataBig,...this.props.dataFitting];
+        let data = all.find((item) => {
+            return parseFloat(item.id) === parseFloat(id) && item.idlx === idlx;
+        });
+        this.props.classify_cart_remove(data);
+           console.log(this.refs["value"+id+idlx]);
+        this.refs["value"+id+idlx].innerHTML=parseInt(this.refs["value"+id+idlx].innerHTML)-1;
+        this.props.removeShop(data);
         // this.setState({
-        //     count:this.state.count+1
+        //     count:this.refs["value"+id+idlx].innerHTML,
         // });
-        if(this.refs[index].previousSibling.innerHTML<=1)return;
-        this.refs[index].previousSibling.innerHTML=parseFloat(this.refs[index].previousSibling.innerHTML)-1;
-        this.setState({
-            count:this.refs[index].previousSibling.innerHTML
-        })
 
-    }
+    };
 
-    plus= async (id,idlx,index) =>{
+    plus= async (id,idlx,index,count,price) =>{
         await this.props.add({id:id,idlx:idlx});
-        // this.setState({
-        //     count:this.state.count+1
-        // });
-        this.refs[index].previousSibling.innerHTML=parseFloat(this.refs[index].previousSibling.innerHTML)+1;
-        console.log(id,idlx);
-        this.setState({
-            count:this.refs[index].previousSibling.innerHTML
-        })
 
-    }
+        let all = [...this.props.select,...this.props.dataBanner,...this.props.dataHot,...this.props.dataBig,...this.props.dataFitting];
+        let data = all.find((item) => {
+            return parseFloat(item.id) === parseFloat(id) && item.idlx === idlx;
+        });
+        this.props.classify_cart(data);
+        console.log(this.refs["value"+id+idlx]);
+        this.refs["value"+id+idlx].innerHTML=parseInt(this.refs["value"+id+idlx].innerHTML)+1;
+
+
+        this.props.addShop(data);
+
+        // this.setState({
+        //     count:this.refs["value"+id+idlx].innerHTML,
+        // })
+    };
 
     select=()=>{
         let {count} = this.props.shopCart;
@@ -154,8 +195,6 @@ class ShopCart extends React.Component {
         this.props.shopCartCount(count,tongbuState);
     }
 
-  
-
     handlePay = async () => {
         //=>验证当前是否登录
         let result = await checkLogin();
@@ -164,29 +203,31 @@ class ShopCart extends React.Component {
             return;
         }
 
-        
+
         //=>获取所有被选中的存储ID
         let selectIDList = [];
         this.props.shopCart.unpay.forEach(item => {
             if (item.check) {
-                selectIDList.push({storeID:item.storeID,idlx:item.idlx});
+                selectIDList.push({storeID:item.id,idlx:item.idlx});
+                // selectIDList.push({storeID:item.storeID,idlx:item.idlx});
             }
         });
-        console.log(selectIDList);
-
         if (selectIDList.length === 0) {
             alert('没有要被结算的订单!');
             return;
         }
         console.log(selectIDList);
         selectIDList = selectIDList.map(({storeID,idlx}={}) => {
-            console.log(storeID,idlx);
             return payShopCart(storeID,idlx);
         });
+        this.props.classify_cart("shanchu");
+
         Promise.all(selectIDList).then(() => {
-            console.log(1);
-            this.props.queryUnpay("classify");
-            this.props.queryPay("classify");
+            let canshu = ["banner","","bigScreen","fitting","list","classify"];
+           this.props.queryUnpay(canshu);
+            // this.props.queryUnpay("classify");
+            this.props.queryPay(canshu);
+
         });
     }
 
@@ -194,5 +235,7 @@ class ShopCart extends React.Component {
 
 export default connect(state=>({
     ...state.shopCart,
-    ...state.detail
-}),{...action.shopCart,...action.detail})(ShopCart);
+    ...state.detail,
+    ...state.home,
+    ...state.select
+}),{...action.shopCart,...action.detail,...action.detail})(ShopCart);

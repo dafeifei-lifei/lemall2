@@ -48,14 +48,12 @@ route.get('/info', (req, res) => {
 
 //列表数据
 route.get('/list', (req, res) => {
-    console.log(111);
     //=>接收客户端传递的参数值，不传的给默认值：limit每页展示条数，page是第几页，type是筛选的类型
     let {limit = 6, page = 1} = req.query;
     limit = parseFloat(limit);
     page = parseFloat(page);
 
     //=>分页处理：就是在所有筛选出来的数据中，找到某一页的那几条数据，然后就把这几条返回给客户端即可
-    // console.log(req.listDATA);
     let total = Math.ceil(req.listDATA.length / limit),//=>总页数
         result = [];
 

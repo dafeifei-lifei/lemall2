@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+ import {Link} from "react-router-dom"
 
  class Accessories extends React.Component{
     constructor(props,context){
@@ -11,6 +11,7 @@ import {connect} from 'react-redux';
         
         let {smallpic}=this.props.dataFitting[0];
         let data=this.props.dataFitting.slice(1);
+        console.log(data);
         return <div className={'accessories'}>
             <h2>精选配件</h2>
             <div className={'top'}>
@@ -19,9 +20,9 @@ import {connect} from 'react-redux';
             <ul className={'bottom clearfix'}>
                 {
                     data.map((item,index)=>{
-                        let {smallpic}=item;
+                        let {smallpic,idlx,id}=item;
                         return <li key={index}>
-                            <img src={smallpic} alt=""/>
+                            <Link to={`/detail/?idlx=${idlx}&id=${id}`}><img src={smallpic} alt=""/></Link>
                         </li>
                     })
                 }

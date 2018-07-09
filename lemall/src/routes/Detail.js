@@ -9,8 +9,8 @@ import "./../static/css/detail.less"
 import {queryDetail} from "../api/detail.js"
 
 import {checkLogin} from "../api/personal"
-// import result from "../static/json/detail.json"
 
+// import result from "../static/json/detail.json"
 
 
 class Detail extends React.Component {
@@ -5424,7 +5424,7 @@ class Detail extends React.Component {
 
     render() {
         console.log(this.props);
-        let {location: {search}, select,dataMall,dataBanner,dataBig,dataFitting,dataHot} = this.props,
+        let {location: {search}, select, dataMall, dataBanner, dataBig, dataFitting, dataHot} = this.props,
             queryObj = Qs.parse(search.substr(1));
         if (!search) return "";
         console.log(search);
@@ -5438,7 +5438,7 @@ class Detail extends React.Component {
             price = select[parseFloat(queryObj.id) - 1].price
         }
         //=>商城排序
-        if(queryObj.idlx==="list"){
+        if (queryObj.idlx === "list") {
             name = dataMall[parseFloat(queryObj.id) - 1].title;
             bigpic = dataMall[parseFloat(queryObj.id) - 1].bigpic;
             dec = dataMall[parseFloat(queryObj.id) - 1].describe;
@@ -5461,7 +5461,8 @@ class Detail extends React.Component {
             name = dataFitting[parseFloat(queryObj.id) - 1].name;
             bigpic = dataFitting[parseFloat(queryObj.id) - 1].bigpic;
             dec = dataFitting[parseFloat(queryObj.id) - 1].dec;
-            price = dataFitting[parseFloat(queryObj.id) - 1].price
+            price = dataFitting[parseFloat(queryObj.id) - 1].price;
+            console.log(name);
         }
         if (queryObj.idlx === "hotSale") {
             name = dataHot[parseFloat(queryObj.id) - 1].name;
@@ -5471,11 +5472,10 @@ class Detail extends React.Component {
         }
 
 
-        let size = /(\d)+/g.exec(name)[0];
+        let size = /(\d)+/g.exec(name) ? /(\d)+/g.exec(name)[0] : "38";
         //=>配送时间
         let date = new Date().toLocaleString().trim();
         date = date.match(/\d+/g);
-        console.log("ok");
         return <div className="detailBox">
             {/*回退按钮*/}
             <div className="backButton" onClick={() => {
@@ -5493,7 +5493,7 @@ class Detail extends React.Component {
                 <div className="linkage">
                     <p>送至:</p>
                     <div className="site">
-                        {this.state.moren ? <p><span style={{color:"#f05353",fontWeight:"bold"}}>请选择省市县</span></p> :
+                        {this.state.moren ? <p><span style={{color: "#f05353", fontWeight: "bold"}}>请选择省市县</span></p> :
                             <p><span>{selectProvince}</span>><span>{selectCity}</span>><span>{selectArea}</span>></p>}
                         <p><b>现货,</b>24:00前完成支付，预计({`${date[0]}.${date[1]}.${parseFloat(date[2]) + 2}`})之前发货</p>
                     </div>
@@ -5609,7 +5609,7 @@ class Detail extends React.Component {
                 <div className="content">
                     <h3>
                         {this.state.linkageList.map((item, index) => {
-                            return <span className={this.state.titleIndex === index ? "active" : ""}
+                            return <span key={index} className={this.state.titleIndex === index ? "active" : ""}
                                          onClick={this.handleTitle.bind(this, index)}>{item}</span>
                         })}
 
@@ -5659,25 +5659,28 @@ class Detail extends React.Component {
         })
     };
     addCart = async () => {
-        if(this.isRun) return;
-        this.isRun=true;
+        if (this.isRun) return;
+        this.isRun = true;
         let {location, add} = this.props;
         let obj = Qs.parse(location.search.substr(1));
         await this.props.add(obj);
-        let data = this.props.select.find((item) => {
+        let all = [...this.props.select,...this.props.dataBanner,...this.props.dataHot,...this.props.dataBig,...this.props.dataFitting];
+        let data = all.find((item) => {
             return parseFloat(item.id) === parseFloat(obj.id) && item.idlx === obj.idlx;
         });
         this.props.classify_cart(data);
-
+         console.log(data);
         console.log(this.props);
 
 
         this.alertBox.classList.add("alertBox");
         this.timer = setTimeout(() => {
             this.alertBox.classList.remove("alertBox");
-            this.isRun=false;
-        }, 1500);
-    };
+            this.isRun = false;
+        }, 10);
+    }
+
+
     handleTitle = (index) => {
         this.setState({
             titleIndex: index
@@ -5702,7 +5705,7 @@ class Detail extends React.Component {
             areaIndex: index,
             selectArea: item,
             dialogShow: false,
-            moren:false
+            moren: false
         })
     };
     clickDialog = () => {
@@ -5713,11 +5716,11 @@ class Detail extends React.Component {
     dialogClose = () => {
         this.setState({
             dialogShow: false,
-            moren:false
+            moren: false
         })
     }
 }
 
 
-export default connect(state => ({...state.detail, ...state.select, ...state.shopCart,...state.home}), {...action.detail,...action.shopCart})(Detail);
+export default connect(state => ({...state.detail, ...state.select, ...state.shopCart, ...state.home}), {...action.detail, ...action.shopCart})(Detail);
 
