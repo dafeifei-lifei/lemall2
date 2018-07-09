@@ -11,8 +11,8 @@ class User extends React.Component {
             isLogin: null
         }
     }
-  
-    async componentDidMount() {
+
+    async componentWillMount() {
         //=>之前如果已经判断过是否登录了，不再重新判断
         if(this.props.isLogin===true){
             this.setState({
@@ -49,7 +49,9 @@ class User extends React.Component {
                 </div>
                 <div className="unlogin">
                     <p>
+                        <div>
                         {this.props.isLogin ? <p>{this.props.userName}</p> : <Link to="/personal/login">登录</Link>}
+                        </div>
                     </p>
                     {!this.props.isLogin ? <p>登录后查看个人信息</p> : <p><Icon type="mobile"></Icon>已与手机绑定</p>}
 

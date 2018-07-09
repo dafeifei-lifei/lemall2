@@ -16,11 +16,11 @@ class ShopCart extends React.Component {
             state:this.props.shopCart.state,
             first:0,
             price:0,
-            allPrice:0 ,
             count:1,
             nowPrice:0 ,
             flag:true, //是否从后台获取数据
-            dialog:false
+            dialog:false,
+            allPrice:0.00
         }
     }
 
@@ -87,7 +87,7 @@ class ShopCart extends React.Component {
 
             {unpay.map((item,index)=>{
                 console.log(item);
-                let {name,smallpic,price,dec,check,id,idlx,count} = item;
+                let {name,smallpic,price,dec,check:checkss,id,idlx,count} = item;
                 if(item.describe){
                     dec = item.describe;
                 }
@@ -97,7 +97,7 @@ class ShopCart extends React.Component {
                     <div>
                         <div className={"select_check"}>
                             {/*checked={!!state}*/}
-                            <input type={"checkbox"} id={"ipt"}  checked={check}  />
+                            <input type={"checkbox"} id={"ipt"}  checked={checkss}  />
                             <label htmlFor={"ipt"} onClick={this.props.handleSelect.bind(this,id)}><Icon type={"check"} /></label>
                         </div>
                         <div>
@@ -211,6 +211,7 @@ class ShopCart extends React.Component {
         //=>获取所有被选中的存储ID
         let selectIDList = [];
         this.props.shopCart.unpay.forEach(item => {
+            // console.log(item.check);
             if (item.check) {
                 selectIDList.push({storeID:item.id,idlx:item.idlx});
                 // selectIDList.push({storeID:item.storeID,idlx:item.idlx});
