@@ -318,7 +318,9 @@ class Detail extends React.Component {
         let {location, add} = this.props;
         let obj = Qs.parse(location.search.substr(1));
         await this.props.add(obj);
-        let all = [...this.props.select, ...this.props.dataBanner, ...this.props.dataHot, ...this.props.dataBig, ...this.props.dataFitting];
+
+        let all = [...this.props.select,...this.props.dataBanner,...this.props.dataHot,...this.props.dataBig,...this.props.dataFitting,...this.props.dataMall];
+
         let data = all.find((item) => {
             return parseFloat(item.id) === parseFloat(obj.id) && item.idlx === obj.idlx;
         });

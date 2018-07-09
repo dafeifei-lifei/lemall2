@@ -47,6 +47,7 @@ class Order extends React.Component {
                 <div className="orderList">
 
                     {
+
                         ary[this.state.clickIndex].map((item, index) => {
                             return <div className="order" key={index}>
                                 <div className="title">
