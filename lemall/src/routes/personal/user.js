@@ -11,9 +11,7 @@ class User extends React.Component {
             isLogin: null
         }
     }
-    componentWillMout(){
-
-    }
+  
     async componentDidMount() {
         //=>之前如果已经判断过是否登录了，不再重新判断
         if(this.props.isLogin===true){
@@ -22,10 +20,22 @@ class User extends React.Component {
             });
             return;
         }
+
         await this.props.checkLogin();
+
+        let canshu = ["banner","","bigScreen","fitting","list","classify"];
+
+        if(this.props.isLogin){//=>已经登录了，获取个人信息
+            // await this.props.getUserData();
+            await this.props.queryUnpay(canshu);
+            await this.props.queryPay(canshu);
+        }
+
         this.setState({
             isLogin: this.props.isLogin
         })
+
+
     }
 
     render() {
@@ -178,4 +188,4 @@ class User extends React.Component {
     }
 }
 
-export default connect(state => ({...state.personal,...state.shopCart}), action.personal)(User);
+export default connect(state => ({...state.personal,...state.shopCart}), {...action.personal,...action.shopCart})(User);

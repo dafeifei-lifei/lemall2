@@ -53,7 +53,7 @@ class Order extends React.Component {
 
                     {
                        ary[this.state.clickIndex].map((item,index)=>{
-                            return <div className="order">
+                            return <div className="order" key={index}>
                                 <div className="title">
                                     <span>乐视自营</span>
                                 </div>
