@@ -16,11 +16,11 @@ class ShopCart extends React.Component {
             state:this.props.shopCart.state,
             first:0,
             price:0,
-            allPrice:0 ,
             count:1,
             nowPrice:0 ,
             flag:true, //是否从后台获取数据
-            dialog:false
+            dialog:false,
+            allPrice:0.00
         }
     }
 
@@ -185,28 +185,12 @@ class ShopCart extends React.Component {
         this.props.shopCart.unpay.forEach(item => {
             if (item.check) {
                 selectIDList.push({storeID:item.id,idlx:item.idlx});
-                // selectIDList.push({storeID:item.storeID,idlx:item.idlx});
             }
         });
         if (selectIDList.length === 0) {
             alert('没有要被结算的订单!');
             return;
         }
-        console.log(selectIDList);
-        // selectIDList = selectIDList.map(({storeID,idlx}={}) => {
-        //     return payShopCart(storeID,idlx);
-        // });
-        //
-        // Promise.all(selectIDList).then(() => {
-        //     let canshu = ["banner","","bigScreen","fitting","list","classify"];
-        //    this.props.queryUnpay(canshu);
-        //     // this.props.queryUnpay("classify");
-        //     this.props.queryPay(canshu);
-        //
-        // });
-
-        // this.props.classify_cart("shanchu");
-
 
         selectIDList.forEach(({storeID,idlx}={},index) => {
             setTimeout(()=>{
@@ -217,16 +201,9 @@ class ShopCart extends React.Component {
         setTimeout( async ()=>{
             let canshu = ["banner","hotSale","bigScreen","fitting","list","classify"];
             await this.props.queryUnpay(canshu);
-            // this.props.queryUnpay("classify");
             await this.props.queryPay(canshu);
-
             this.props.classify_cart("shanchu");
-
         },500);
-
-
-
-
     }
 
 }

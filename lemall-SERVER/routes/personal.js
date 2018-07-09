@@ -120,5 +120,4 @@ route.get("/checkingName",(req,res)=>{
         res.send({code:0,msg:"ok",data:"欢迎注册"});
     }
 });
-
 module.exports = route;

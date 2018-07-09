@@ -21,7 +21,7 @@ function shopCart(state=INIT_STATE,action) {
             if(action.unPayCart instanceof Array){
                 state.shopCart.unpay.push({...action.unPayCart,check:true});
             }else{
-                state.shopCart.unpay.push(action.unPayCart);
+                state.shopCart.unpay.push({...action.unPayCart,check:true});
             }
             break;
 
@@ -38,6 +38,7 @@ function shopCart(state=INIT_STATE,action) {
         case TYPES.SHOP_PAY:
             if (parseFloat(action.result.code) === 0) {
                 state.shopCart.pay = action.result.data;
+                console.log(state.shopCart.pay);
                 // state.shopCart.unpay = [];
                 // state.Cart=[];
 
