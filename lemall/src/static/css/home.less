@@ -80,96 +80,106 @@
     background: #FFF;
     width: 100%;
     overflow: hidden;
+    margin: 0;
     li {
       display: inline-block;
       width: 20%;
-      &:nth-of-type(1){
-        text-align: center;
-       i{
-         margin-left: .35rem;
-       }
-        span{
-          margin-left: 0;
-        }
-      }
       i {
         display: block;
-        width: .7rem;
-        height: .7rem;
-        line-height: .7rem;
-        font-size: .55rem;
-        margin-left: .4rem;
+        width: .9rem;
+        height: .9rem;
+        margin-left: .25rem;
         border-radius: .2rem;
-        text-align: center;
-        color: #FFF;
         &.fenlei {
-          background: lightskyblue;
+          background: url("http://m.lemall.com/public/font/indexsvg/sprite.svg") -1.22rem -3.6rem
+          no-repeat;
+          background-size: 5rem auto;
+
         }
         &.tv {
-          background: orange;
+          background: url("http://m.lemall.com/public/font/indexsvg/sprite.svg") -1.22rem -1.38rem
+          no-repeat;
+          background-size: 5rem auto;
         }
         &.vip {
-          background: lightsalmon;
+          background: url("http://m.lemall.com/public/font/indexsvg/sprite.svg") -2.88rem -1.223rem
+          no-repeat;
+          background-size: 5rem auto;
         }
         &.install {
-          background: burlywood;
+          background: url("http://m.lemall.com/public/font/indexsvg/sprite.svg") -0.11rem -1.365rem
+          no-repeat;
+          background-size: 5rem auto;
         }
         &.lemi {
-          background: coral;
+          background: url("http://m.lemall.com/public/font/indexsvg/sprite.svg") -1.22rem -2.473rem
+          no-repeat;
+          background-size: 5rem auto;
         }
       }
       span {
         font-style: normal;
         display: block;
-        width: 100%;
-        padding-top: .2rem;
+        width:100%;
+        padding-top: .1rem;
         font-size: .2rem;
         color: #2a2a2a;
-        margin-left: .3rem;
+        text-align: center;
+        &:nth-of-type(1){
+          margin: 0;
+
+        }
 
       }
     }
   }
   .banner2 {
-    margin-top: -.29rem;
     display: block;
     position: relative;
-    height: 1.4rem;
+    height: 1.3rem;
+    .slick-slider{
+      height: 1.4rem;
+    }
     .container {
       background: #f1f1f1;
       padding: 0  0 .1rem 0 ;
+      margin-top: -.05rem;
       .imgContainer {
         width: 1.5rem;
         display: inline-block;
-        height: 1.4rem;
-        line-height: 1.4rem;
-        margin-bottom: -.44rem;
-        overflow: hidden;
+        height: .8rem;
         img {
           width: 100%;
+          margin: .1rem;
         }
       }
       .title{
         position: relative;
+        font-size: 0;
+        margin-top: .13rem;
       }
       h3 {
         display: inline-block;
+        vertical-align: middle;
         width: 3rem;
-        height: .4rem;
+        height: .3rem;
         position: absolute;
         font-size: .24rem;
+        line-height: .3rem;
         left: 1.8rem;
-        bottom: 4rem;
+        bottom: 3.7rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       p {
+        vertical-align: middle;
         display: inline-block;
         position: absolute;
-        bottom: 3.7rem;
+        bottom: 3.4rem;
         left: 1.8rem;
         font-size: .20rem;
+        line-height: .2rem;
       }
 
     }
@@ -177,7 +187,7 @@
       img {
         display: inline-block;
         width: 1.9rem;
-        height: 1.15rem;
+        height: 1.1rem;
         position: absolute;
         right: 0;
         top: 0;
@@ -211,6 +221,7 @@
       border: .01rem solid #e1e1e0;
       box-sizing: border-box;
       overflow: hidden;
+      margin-bottom: 0.1rem;
       li {
         float: left;
         &.containerLeft {
@@ -254,7 +265,7 @@
     }
   }
   .big{
-    margin: .4rem 0 .4rem 0;
+    margin-bottom: .2rem;
     h2 {
       background: #FFF;
       margin: 0;
