@@ -7,12 +7,21 @@ import action from "../../store/action/index.js"
 
 class Login extends React.Component {
     constructor() {
-        super()
+        super();
+        this.state = {
+            isShow: false,
+            tip:"请输入正确的用户名！"
+        }
     }
 
     render() {
         return <div className="loginBox">
-            <div className="close" onClick={()=>{this.props.history.push("/personal")}}><Icon type="close"></Icon></div>
+            <div className={this.state.isShow ? "tipShow" : "tip"}>
+                <span>{this.state.tip}</span>
+            </div>
+            <div className="close" onClick={() => {
+                this.props.history.push("/personal")
+            }}><Icon type="close"></Icon></div>
             <div className="title">
                 <div className="logo">
                     <img src="http://i2.letvimg.com/lc04_img/201803/12/17/36/CNlogo2x.png" alt=""/>
@@ -66,17 +75,66 @@ class Login extends React.Component {
             name = userName.value,
             password = md5(passValue.value);
 
-        if(!name || !passValue.value){
-            alert("请输入用户名或密码");
+        if (!name || !passValue.value) {
+
+            /*this.setState({
+                isShow:!this.state.isShow,
+                tip:"请输入用户名和密码！"
+            });
+            setTimeout(()=>{
+                this.setState({
+                    isShow:!this.state.isShow
+                });
+            },2000);*/
             return;
         }
         await this.props.logining({name, password});
-        userName.value=passValue.value="";
-        if(this.props.loginRun){
+        userName.value = passValue.value = "";
+        if (this.props.loginRun) {
             this.props.keepUserName(name);
             this.props.history.go(-1);
-        }else {
-            alert("用户名不存在，请稍后重试")
+        } else {
+            userName.value = passValue.value = "";
+            /*this.setState({
+                isShow:!this.state.isShow,
+                tip:"用户名不存在，快去注册吧！"
+            });
+            setTimeout(()=>{
+                this.setState({
+                    isShow:!this.state.isShow
+                });
+            },2000);*/
+        }
+    };
+    checking = (ev) => {
+        let target = ev.target,
+            reg = /^((\d{11})|(\w+((-\w+)|(.\w+))@[A-Za-z0-9)]+([-.][A-Za-z0-9]+)*(\.[A-Za-z0-9]+)))$/i;
+        if (target.parentNode.className === "userName") {
+            if (!reg.test(target.value)&&target.value) {
+                this.setState({
+                    isShow:!this.state.isShow,
+                    tip:"请输入正确的用户名！"
+                });
+                target.value = "";
+                setTimeout(()=>{
+                    this.setState({
+                        isShow:!this.state.isShow
+                    });
+                },2000);
+            }
+        } else {
+            if (!/^\w{8}$/i.test(target.value)&&target.value) {
+                this.setState({
+                    isShow:!this.state.isShow,
+                    tip:"请输入8位密码！"
+                });
+                target.value = "";
+                setTimeout(()=>{
+                    this.setState({
+                        isShow:!this.state.isShow
+                    });
+                },2000);
+            }
         }
     }
 }

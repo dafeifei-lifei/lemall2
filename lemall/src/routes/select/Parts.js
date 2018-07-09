@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import action from "../../store/action";
-// import data from '../../calssdata.json'
+import {Link} from "react-router-dom"
 
 class Parts extends React.Component{
     constructor(props,context){
@@ -17,13 +17,15 @@ class Parts extends React.Component{
             <ul>
                 {x.map((item,index)=>{
                     return <li key={index} className={'clearfix'}>
-                        <div className={'partsBox_pic'}>
-                            <img src={item.pic} alt={item.name}/>
-                        </div>
-                        <div className={'partsBox_text clearfix'}>
-                            <span>{item.name}</span>
-                            <em>&gt;</em>
-                        </div>
+                        <Link to="/home/tv">
+                            <div className={'partsBox_pic'}>
+                                <img src={item.pic} alt={item.name}/>
+                            </div>
+                            <div className={'partsBox_text clearfix'}>
+                                <span>{item.name}</span>
+                                <em>&gt;</em>
+                            </div>
+                        </Link>
                     </li>
                 })}</ul>
         </div>

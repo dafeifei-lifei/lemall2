@@ -4,6 +4,48 @@
     background-color: #FFFFFF;
     padding: 0 .4rem;
     position: relative;
+    .tip{
+      position: fixed;
+      top:-100%;
+      left: 0;
+      transition:all .3s ease-in;
+      height: 1rem;
+      line-height: .65rem;
+      width: 100%;
+      span{
+        width: 80%;
+        border-radius: .2rem;
+        height: 100%;
+        padding: .2rem .8rem;
+        background: rgba(0,0,0,.2);
+        color: white;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+    .tipShow{
+      position: fixed;
+      top:4%;
+      left: 0;
+      transition:all .3s ease-in;
+      height: 1rem;
+      line-height: .65rem;
+      width: 100%;
+      span{
+        width: 80%;
+        border-radius: .2rem;
+        height: 100%;
+        padding: .2rem .8rem;
+        background: rgba(0,0,0,.2);
+        color: white;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        font-size: .4rem;
+        font-weight: bold;
+      }
+    }
     .close{
       position: absolute;
       right: .2rem;
@@ -140,6 +182,48 @@
     background-color: #FFFFFF;
     padding: 0 .4rem;
     position: relative;
+    .tip{
+      position: fixed;
+      top:-100%;
+      left: 0;
+      transition:all .3s ease-in;
+      height: 1rem;
+      line-height: .65rem;
+      width: 100%;
+      span{
+        width: 80%;
+        border-radius: .2rem;
+        height: 100%;
+        padding: .2rem .8rem;
+        background: rgba(0,0,0,.2);
+        color: white;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+    .tipShow{
+      position: fixed;
+      top:4%;
+      left: 0;
+      transition:all .3s ease-in;
+      height: 1rem;
+      line-height: .65rem;
+      width: 100%;
+      span{
+        width: 80%;
+        border-radius: .2rem;
+        height: 100%;
+        padding: .2rem .8rem;
+        background: rgba(0,0,0,.2);
+        color: white;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        font-size: .4rem;
+        font-weight: bold;
+      }
+    }
     .close{
       position: absolute;
       right: .2rem;
@@ -485,6 +569,10 @@
     .content{
       .empty{
         display: none;
+
+      }
+      .emptyShow{
+        display: block;
         div{
           margin-top: 2rem;
           text-align: center;

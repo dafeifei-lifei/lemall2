@@ -1,5 +1,4 @@
 import React from 'react';
-import data from '../../static/json/home.json';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
@@ -10,10 +9,10 @@ class Hot extends React.Component{
 
     }
     render(){
-        console.log(this.props.dataHot);
         let {smallpic:smallpic1,id:id1,idlx:idlx1} =this.props.dataHot[0];
         let {smallpic:smallpic2,id:id2,idlx:idlx2} =this.props.dataHot[1];
         let {smallpic:smallpic3,id:id3,idlx:idlx3} =this.props.dataHot[2];
+
         return <div className={'hot'}>
             <h2>热卖精选</h2>
             <ul className={'containerBox clearfix'}>

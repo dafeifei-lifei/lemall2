@@ -18,7 +18,7 @@ class NavSearch extends React.Component{
             </div>
             <div className={"searchDiv"}>
                 <span className={"span1"}><Icon  type="search" /></span>
-               <input type={"text"} ref={"ipt"}/>
+               <input type={"text"} ref={"ipt"} onKeyUp={this.search}/>
             </div>
             <div className={"close"} >
             <span className={"span2"}><Icon onClick={this.clear} className={"closeIcon"}  type="close-circle-o" /></span>
@@ -45,14 +45,20 @@ class NavSearch extends React.Component{
 
     back=()=>{
         this.props.history.go(-1);
-    }
+    };
     clear=()=>{
         this.refs.ipt.value="";
-    }
+    };
     clearHistory=()=>{
         this.refs.history1.style.display="none";
         this.refs.history2.style.display="none";
         this.refs.history3.style.display="none";
+    };
+    search=(ev)=>{
+        if(ev.keyCode===13){
+            this.props.history.push("/home/tv");
+            ev.target.value="";
+        }
     }
 
 

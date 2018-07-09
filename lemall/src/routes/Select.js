@@ -19,10 +19,12 @@ class Common extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fenleiData();
-        this.setState({
-            data: 1
-        })
+        if(this.props.fenlei.length==0){
+            this.props.fenleiData();
+            this.setState({
+                data: 1
+            })
+        }
     }
 
     render() {

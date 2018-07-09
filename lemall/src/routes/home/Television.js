@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from "react-router-dom"
-import television from '../../static/json/television.json'
 import {Icon, Input, Button} from 'antd';
 import action from "./../../store/action/index.js"
 
@@ -37,7 +36,7 @@ class Television extends React.Component {
         let {clickIndex, data, priceUpDown, evaluateUpDown} = this.state;
         return <div className='television'>
             <header className="title">
-                <Link to="/home"><Icon type="left" className="goback"/></Link>
+             <Icon type="left" className="goback" onClick={()=>{this.props.history.go(-1)}}/>
                 <div className='search'>
                     <span><Icon type="search"/></span>
                     <input type="text" placeholder="输入搜索产品"/>
@@ -150,8 +149,7 @@ class Television extends React.Component {
             this.dataMall = this.props.dataTime
         }
         if (this.state.clickIndex === 2) {
-            this.st
-            pDown ? this.dataMall = this.props.dataPriceUp : this.dataMall = this.props.dataPriceDown;
+            this.state.priceUpDown? this.dataMall = this.props.dataPriceUp : this.dataMall = this.props.dataPriceDown;
         }
         console.log(this.state.priceUpDown);
         if (this.state.clickIndex === 3) {

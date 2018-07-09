@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import action from "../../store/action";
-// import data from  '../../calssdata.json'
+import {Link} from "react-router-dom"
 
 class LeVip extends React.Component{
     constructor(props,context){
@@ -16,13 +16,15 @@ class LeVip extends React.Component{
             <ul>
                 {x.map((item,index)=>{
                     return <li key={index} className={'clearfix'}>
-                        <div className={'levipBox_pic'}>
-                            <img src={item.pic} alt={item.name}/>
-                        </div>
-                        <div className={'levipBox_text clearfix'}>
-                            <span>{item.name}</span>
-                            <em>&gt;</em>
-                        </div>
+                        <Link to={"/home/tv"}>
+                            <div className={'levipBox_pic'}>
+                                <img src={item.pic} alt={item.name}/>
+                            </div>
+                            <div className={'levipBox_text clearfix'}>
+                                <span>{item.name}</span>
+                                <em>&gt;</em>
+                            </div>
+                        </Link>
                     </li>
                 })}</ul>
         </div>

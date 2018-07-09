@@ -1,5 +1,4 @@
 import React from 'react'
-//import '../../static/css/television.less'
 import {Icon} from 'antd'
 
 export default class Maintain extends React.Component {

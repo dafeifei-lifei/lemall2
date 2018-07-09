@@ -18,6 +18,13 @@ function personal(state=INIT_STATE,action) {
                 state.isLogin=false;
             }
             break;
+        case TYPES.PERSONAL_USER_INFO:
+            let personalResult=action.result;
+            if(personalResult.code===0){
+                state.userName=personalResult.data.name;
+                console.log(state.userName);
+            }
+            break;
         case TYPES.PERSONAL_LOGIN_LOGINING:
             let payload=action.result;
             if(payload.code===0){//=>登录成功

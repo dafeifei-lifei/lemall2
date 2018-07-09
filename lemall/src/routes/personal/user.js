@@ -11,25 +11,31 @@ class User extends React.Component {
             isLogin: null
         }
     }
-    componentWillMout(){
 
-    }
     async componentDidMount() {
         //=>之前如果已经判断过是否登录了，不再重新判断
         if(this.props.isLogin===true){
+            console.log("ok");
             this.setState({
                 isLogin: this.props.isLogin
             });
             return;
         }
+        let canshu = ["banner","","bigScreen","fitting","list","classify"];
+        //=>检测是否登录
         await this.props.checkLogin();
+        if(this.props.isLogin){//=>已经登录了，获取个人信息
+            await this.props.getUserData();
+            await this.props.queryUnpay(canshu);
+            await this.props.queryPay(canshu);
+        }
         this.setState({
             isLogin: this.props.isLogin
         })
     }
 
     render() {
-
+        console.log(this.props.userName);
         return <div className="userBox">
             {this.props.isLogin?<div className="out" onClick={()=>{this.out()}}>退出</div>:""}
             <div className="person">
@@ -178,4 +184,4 @@ class User extends React.Component {
     }
 }
 
-export default connect(state => ({...state.personal,...state.shopCart}), action.personal)(User);
+export default connect(state => ({...state.personal,...state.shopCart}), {...action.personal,...action.shopCart})(User);

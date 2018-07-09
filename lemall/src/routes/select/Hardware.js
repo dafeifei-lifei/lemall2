@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import data from '../../calssdata.json'
+import {Link} from "react-router-dom"
 import action from "../../store/action"
 
 class Hardware extends React.Component{
@@ -16,13 +16,15 @@ class Hardware extends React.Component{
             <ul>
             {x.map((item,index)=>{
                 return <li key={index} className={'clearfix'}>
-                    <div className={'hardwareBox_pic'}>
-                        <img src={item.pic} alt={item.name}/>
-                    </div>
-                    <div className={'hardwareBox_text clearfix'}>
-                        <span>{item.name}</span>
-                        <em>&gt;</em>
-                    </div>
+                    <Link to={"/home/tv"}>
+                        <div className={'hardwareBox_pic'}>
+                            <img src={item.pic} alt={item.name}/>
+                        </div>
+                        <div className={'hardwareBox_text clearfix'}>
+                            <span>{item.name}</span>
+                            <em>&gt;</em>
+                        </div>
+                    </Link>
                 </li>
             })}</ul>
         </div>

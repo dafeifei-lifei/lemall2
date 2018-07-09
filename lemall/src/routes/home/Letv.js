@@ -1,5 +1,4 @@
 import React from 'react'
-//import '../../static/css/television.less'
 import {Icon, Carousel} from 'antd'
 
 export default class Letv extends React.Component {

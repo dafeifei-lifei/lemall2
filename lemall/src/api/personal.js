@@ -4,6 +4,11 @@ import axios from "./index.js"
 export function checkLogin() {
     return axios.get("/personal/login");
 }
+//=>获取用户个人信息
+export function getUserInfo() {
+    return axios.get("/personal/info");
+}
+
 
 //=>验证登录是否成功
 export function login(payload) {

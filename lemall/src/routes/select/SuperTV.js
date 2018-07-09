@@ -11,7 +11,9 @@ class Select extends React.Component {
     }
 
     componentDidMount(){
-        this.props.selectData();
+        if(this.props.select.length===0){
+            this.props.selectData();
+        }
     }
     render() {
         let {fenlei,select} = this.props;
@@ -49,13 +51,15 @@ class Select extends React.Component {
                 <ul className="sou_r_bottom">
                     {x['series'].map((item, index) => {
                         return <li key={index}>
-                            <div className={'sou_r_bottom_pic'}>
-                                <img src={item.pic} alt=""/>
-                            </div>
-                            <div className={'sou_r_bottom_text clearfix'}>
-                                <span>{item.name}</span>
-                                <em>&gt;</em>
-                            </div>
+                            <Link to="/home/tv">
+                                <div className={'sou_r_bottom_pic'}>
+                                    <img src={item.pic} alt=""/>
+                                </div>
+                                <div className={'sou_r_bottom_text clearfix'}>
+                                    <span>{item.name}</span>
+                                    <em>&gt;</em>
+                                </div>
+                            </Link>
                         </li>
                     })}
                 </ul>

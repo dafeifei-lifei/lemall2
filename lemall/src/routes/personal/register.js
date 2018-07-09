@@ -5,10 +5,17 @@ import action from "../../store/action/index.js"
 import md5 from "blueimp-md5"
 class Register extends React.Component{
     constructor(){
-        super()
+        super();
+        this.state = {
+            isShow: false,
+            tip:"请输入正确的用户名！"
+        }
     }
     render(){
         return <div className="registerBox">
+            <div className={this.state.isShow ? "tipShow" : "tip"}>
+                <span>{this.state.tip}</span>
+            </div>
             <div className="close" onClick={()=>{this.props.history.push("/personal")}}><Icon type="close"></Icon></div>
             <div className="title">
                 <div className="logo">
@@ -21,11 +28,11 @@ class Register extends React.Component{
                     <Icon type="user"></Icon>
                     <input type="text" placeholder="姓名" ref="name"/>
                 </div>
-                <div className="userName">
+                <div className="email">
                     <Icon type="mail"></Icon>
                     <input type="email" placeholder="邮箱" ref="email"/>
                 </div>
-                <div className="userName">
+                <div className="phone">
                     <Icon type="phone"></Icon>
                     <input type="email" placeholder="电话" ref="phone"/>
                 </div>
@@ -57,7 +64,17 @@ class Register extends React.Component{
             phoneValue=phone.value,
             passwordValue=password.value;
         if(!nameValue || !emailValue ||!phoneValue ||!passwordValue){
-            alert("请输入完整信息");
+           /* this.setState({
+                isShow:!this.state.isShow,
+                tip:"请设置完整信息！"
+            });
+            name.Value=email.Value=phone.Value=password.Value="";
+            setTimeout(()=>{
+                this.setState({
+                    isShow:!this.state.isShow
+                });
+            },1500);*/
+
             return;
         }
             passwordValue=md5(passwordValue);
@@ -68,7 +85,62 @@ class Register extends React.Component{
             this.props.history.push("/personal");
 
         }else{
-            alert("注册失败，请重试！")
+           /* this.setState({
+                isShow:!this.state.isShow,
+                tip:"注册失败，请稍后重试！"
+            });
+            setTimeout(()=>{
+                this.setState({
+                    isShow:!this.state.isShow
+                });
+            },1500);*/
+        }
+    };
+
+    tip=(ev)=>{
+        let target=ev.target,
+            parClass=target.parentNode.className;
+        if(parClass==="email"&&target.value){
+            if(!/^\w+((-\w+)|(.\w+))@[A-Za-z0-9)]+([-.][A-Za-z0-9]+)*(\.[A-Za-z0-9]+)$/i.test(target.value)){
+                this.setState({
+                    isShow:!this.state.isShow,
+                    tip:"请使用正确的邮箱！"
+                });
+                target.value = "";
+                setTimeout(()=>{
+                    this.setState({
+                        isShow:!this.state.isShow
+                    });
+                },2000);
+            }
+        }
+        if(parClass==="phone"&&target.value){
+            if(!/^\d{11}$/i.test(target.value)){
+                this.setState({
+                    isShow:!this.state.isShow,
+                    tip:"请使用正确的电话！"
+                });
+                target.value = "";
+                setTimeout(()=>{
+                    this.setState({
+                        isShow:!this.state.isShow
+                    });
+                },2000);
+            }
+        }
+        if(parClass==="userPassword"&&target.value){
+            if(!/^\d{8}$/i.test(target.value)){
+                this.setState({
+                    isShow:!this.state.isShow,
+                    tip:"请设置8位密码！"
+                });
+                target.value = "";
+                setTimeout(()=>{
+                    this.setState({
+                        isShow:!this.state.isShow
+                    });
+                },2000);
+            }
         }
 
     }

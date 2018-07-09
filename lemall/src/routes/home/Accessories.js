@@ -8,10 +8,8 @@ import {connect} from 'react-redux';
         
     }
     render(){
-        
         let {smallpic}=this.props.dataFitting[0];
         let data=this.props.dataFitting.slice(1);
-        console.log(data);
         return <div className={'accessories'}>
             <h2>精选配件</h2>
             <div className={'top'}>

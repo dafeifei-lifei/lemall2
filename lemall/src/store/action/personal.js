@@ -1,5 +1,5 @@
 import * as TYPES from "./../action-types.js"
-import {checkLogin,login,register,out} from "../../api/personal.js"
+import {checkLogin,login,register,out,getUserInfo} from "../../api/personal.js"
 
 let personal={
     /*检验是否登录*/
@@ -7,6 +7,13 @@ let personal={
         return {
             type:TYPES.PERSONAL_USER_CHECK_LOGIN,
             result:await checkLogin()
+        }
+    },
+    /*获取个人信息*/
+    async getUserData(){
+        return{
+            type:TYPES.PERSONAL_USER_INFO,
+            result:await getUserInfo()
         }
     },
     /*登录是否成功*/
