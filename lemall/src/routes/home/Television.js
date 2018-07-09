@@ -150,7 +150,8 @@ class Television extends React.Component {
             this.dataMall = this.props.dataTime
         }
         if (this.state.clickIndex === 2) {
-            this.state.priceUpDown ? this.dataMall = this.props.dataPriceUp : this.dataMall = this.props.dataPriceDown;
+            this.st
+            pDown ? this.dataMall = this.props.dataPriceUp : this.dataMall = this.props.dataPriceDown;
         }
         console.log(this.state.priceUpDown);
         if (this.state.clickIndex === 3) {
