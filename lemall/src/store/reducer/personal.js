@@ -5,7 +5,9 @@ let INIT_STATE={
     isLogin:null,//=>记录是否登录
     loginRun:null,//=>记录登录是否成功
     isRegister:null,//=>记录注册是否成功
-    userName:null//=>记录登录后用户的信息
+    userName:null,//=>记录登录后用户的信息
+    saveUnpay:[],
+    count:0
 };
 function personal(state=INIT_STATE,action) {
     state=JSON.parse(JSON.stringify(state));
@@ -49,7 +51,10 @@ function personal(state=INIT_STATE,action) {
                 state.isLogin=false;
             }
             break;
-
+        case TYPES.PERSONAL_SAVEUNPAY:
+            state.saveUnpay=action.ary;
+            state.count=1;
+            break;
     }
     return state;
 }

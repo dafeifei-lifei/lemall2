@@ -43,6 +43,12 @@ let personal={
             type:TYPES.PERSONAL_OUT,
             result:await out()
         }
+    },
+    saveUnpay(ary){
+        return{
+            type:TYPES.PERSONAL_SAVEUNPAY,
+            ary
+        }
     }
 };
 export default personal;

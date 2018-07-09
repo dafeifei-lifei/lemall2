@@ -39,12 +39,13 @@ class Detail extends React.Component {
             selectArea: null,
             dialogShow: false,//=>显示省市三级联动框
             moren: true,
-            endIndex:9
+            endIndex: 9,
+            addDialog: false
         }
     }
 
     componentWillMount() {
-        document.documentElement.scrollTop=0;
+        document.documentElement.scrollTop = 0;
         window.onscroll = () => {
             let scrollT = document.documentElement.scrollTop;
             if (scrollT > 1220) {
@@ -64,11 +65,11 @@ class Detail extends React.Component {
         let {location: {search}, select, dataMall, dataBanner, dataBig, dataFitting, dataHot} = this.props,
             queryObj = Qs.parse(search.substr(1));
         if (!search) return "";
-        let {selectProvince, selectCity, selectArea} = this.state;
+        let {selectProvince, selectCity, selectArea, addDialog} = this.state;
         let name, bigpic, dec, price;
         //=>分类
         if (queryObj.idlx === "classify") {
-            this.state.evaluate=select[parseFloat(queryObj.id) - 1]["comment"];
+            this.state.evaluate = select[parseFloat(queryObj.id) - 1]["comment"];
 
             name = select[parseFloat(queryObj.id) - 1].name;
             bigpic = select[parseFloat(queryObj.id) - 1].bigpic;
@@ -77,7 +78,7 @@ class Detail extends React.Component {
         }
         //=>商城排序
         if (queryObj.idlx === "list") {
-            this.state.evaluate=dataMall[parseFloat(queryObj.id) - 1]["comment"];
+            this.state.evaluate = dataMall[parseFloat(queryObj.id) - 1]["comment"];
             name = dataMall[parseFloat(queryObj.id) - 1].title;
             bigpic = dataMall[parseFloat(queryObj.id) - 1].bigpic;
             dec = dataMall[parseFloat(queryObj.id) - 1].describe;
@@ -85,28 +86,28 @@ class Detail extends React.Component {
         }
         //=>首页banner
         if (queryObj.idlx === "banner") {
-            this.state.evaluate=dataBanner[parseFloat(queryObj.id) - 1]["comment"];
+            this.state.evaluate = dataBanner[parseFloat(queryObj.id) - 1]["comment"];
             name = dataBanner[parseFloat(queryObj.id) - 1].name;
             bigpic = dataBanner[parseFloat(queryObj.id) - 1].bigpic;
             dec = dataBanner[parseFloat(queryObj.id) - 1].dec;
             price = dataBanner[parseFloat(queryObj.id) - 1].price
         }
         if (queryObj.idlx === "bigScreen") {
-            this.state.evaluate=dataBig[parseFloat(queryObj.id) - 1]["comment"];
+            this.state.evaluate = dataBig[parseFloat(queryObj.id) - 1]["comment"];
             name = dataBig[parseFloat(queryObj.id) - 1].name;
             bigpic = dataBig[parseFloat(queryObj.id) - 1].bigpic;
             dec = dataBig[parseFloat(queryObj.id) - 1].dec;
             price = dataBig[parseFloat(queryObj.id) - 1].price
         }
         if (queryObj.idlx === "fitting") {
-            this.state.evaluate=dataFitting[parseFloat(queryObj.id) - 1]["comment"];
+            this.state.evaluate = dataFitting[parseFloat(queryObj.id) - 1]["comment"];
             name = dataFitting[parseFloat(queryObj.id) - 1].name;
             bigpic = dataFitting[parseFloat(queryObj.id) - 1].bigpic;
             dec = dataFitting[parseFloat(queryObj.id) - 1].dec;
             price = dataFitting[parseFloat(queryObj.id) - 1].price;
         }
         if (queryObj.idlx === "hotSale") {
-            this.state.evaluate=dataHot[parseFloat(queryObj.id) - 1]["comment"];
+            this.state.evaluate = dataHot[parseFloat(queryObj.id) - 1]["comment"];
             name = dataHot[parseFloat(queryObj.id) - 1].name;
             bigpic = dataHot[parseFloat(queryObj.id) - 1].bigpic;
             dec = dataHot[parseFloat(queryObj.id) - 1].dec;
@@ -117,6 +118,7 @@ class Detail extends React.Component {
         let date = new Date().toLocaleString().trim();
         date = date.match(/\d+/g);
         return <div className="detailBox">
+            <div className={addDialog ? "addDialogShow" : "addDialog"}></div>
             {/*回退按钮*/}
             <div className="backButton" onClick={() => {
                 this.props.history.go(-1)
@@ -133,7 +135,7 @@ class Detail extends React.Component {
                 <div className="linkage">
                     <p>送至:</p>
                     <div className="site">
-                        {this.state.moren? <p><span style={{color: "#f05353", fontWeight: "bold"}}>请选择省市县</span></p> :
+                        {this.state.moren ? <p><span style={{color: "#f05353", fontWeight: "bold"}}>请选择省市县</span></p> :
                             <p><span>{selectProvince}</span>><span>{selectCity}</span>><span>{selectArea}</span>></p>}
                         <p><b>现货,</b>24:00前完成支付，预计({`${date[0]}.${date[1]}.${parseFloat(date[2]) + 2}`})之前发货</p>
                     </div>
@@ -197,7 +199,7 @@ class Detail extends React.Component {
                     <i></i>
                 </div>
                 {
-                    this.state.evaluate.slice(0,this.state.endIndex).map((item, index) => {
+                    this.state.evaluate.slice(0, this.state.endIndex).map((item, index) => {
                         return <div className="evaluateDetail" key={index}>
                             <div className="person">
                                 <div className="icon">
@@ -316,17 +318,24 @@ class Detail extends React.Component {
         this.isRun = true;
         let {location, add} = this.props;
         let obj = Qs.parse(location.search.substr(1));
+
         await this.props.add(obj);
 
-        let all = [...this.props.select,...this.props.dataBanner,...this.props.dataHot,...this.props.dataBig,...this.props.dataFitting,...this.props.dataMall];
+        let all = [...this.props.select, ...this.props.dataBanner, ...this.props.dataHot, ...this.props.dataBig, ...this.props.dataFitting, ...this.props.dataMall];
 
         let data = all.find((item) => {
             return parseFloat(item.id) === parseFloat(obj.id) && item.idlx === obj.idlx;
         });
         this.props.classify_cart(data);
         this.alertBox.classList.add("alertBox");
+        this.setState({
+            addDialog:!this.state.addDialog
+        });
         this.timer = setTimeout(() => {
             this.alertBox.classList.remove("alertBox");
+            this.setState({
+                addDialog:!this.state.addDialog
+            });
             this.isRun = false;
         }, 1500);
     }
@@ -370,11 +379,11 @@ class Detail extends React.Component {
             moren: false
         })
     };
-    loadingMore=()=>{
+    loadingMore = () => {
         this.setState({
-            endIndex:this.state.endIndex+10
+            endIndex: this.state.endIndex + 10
         })
-}
+    }
 }
 
 

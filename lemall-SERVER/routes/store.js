@@ -56,13 +56,14 @@ route.get('/info', (req, res) => {
         idlx1 = req.query.idlx,
         personID = req.session.personID,
         storeList = [];
-
     let data = [];
+    console.log(personID,state,idlx1);
 
     for(let key in idlx1) {
         if (personID) {
             //=>登录状态下是从JSON文件中获取：在STORE.JSON中找到所有personID和登录用户相同的(服务器从SESSION中可以获取用户ID的)
             req.storeDATA.forEach(item => {
+                console.log(parseFloat(item.personID),parseFloat(item.state),item.idlx,idlx1[key] )
                 if (parseFloat(item.personID) === personID && parseFloat(item.state) === state&&item.idlx===idlx1[key]) {
                     storeList.push({
                         currentId: parseFloat(item.currentId),
@@ -79,14 +80,17 @@ route.get('/info', (req, res) => {
                 });
             }
         }
+        console.log(storeList);
 
     //=>根据上面查找到的课程ID（storeList），把每一个课程的详细信息获取到，返回给客户端
     storeList.forEach(({currentId, storeID} = {}) => {
 
         let item = req.shoppingDATA.find((item,index) => {
+            console.log(parseFloat(item.id),parseFloat(currentId),item.idlx,idlx1[key] )
             return parseFloat(item.id) === parseFloat(currentId)&&item.idlx===idlx1[key]
         });
         if(!item)return;
+        console.log(item);
         data.push(item);
     });
     }
