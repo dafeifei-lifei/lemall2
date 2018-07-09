@@ -19,7 +19,8 @@ class ShopCart extends React.Component {
             allPrice:0 ,
             count:1,
             nowPrice:0 ,
-            flag:true //是否从后台获取数据
+            flag:true, //是否从后台获取数据
+            dialog:false
         }
     }
 
@@ -73,10 +74,10 @@ class ShopCart extends React.Component {
                  })
             );
         }
-
         console.log(newunpay);
         unpay = newunpay;
         return <div className={"shopCartBox"}>
+            <div className={this.state.dialog?'dialogShoe':"dialog"}></div>
             <div className={"shopHead"}>
                 <Icon type="left" onClick={() => this.props.history.go(-1)}/>
                 <span>购物车</span>
@@ -87,6 +88,9 @@ class ShopCart extends React.Component {
             {unpay.map((item,index)=>{
                 console.log(item);
                 let {name,smallpic,price,dec,check,id,idlx,count} = item;
+                if(item.describe){
+                    dec = item.describe;
+                }
                 console.log(name);
                 return <div className={"shopBody"} key={index}>
                     <div><span>乐视自营</span></div>
@@ -217,18 +221,40 @@ class ShopCart extends React.Component {
             return;
         }
         console.log(selectIDList);
-        selectIDList = selectIDList.map(({storeID,idlx}={}) => {
-            return payShopCart(storeID,idlx);
-        });
-        this.props.classify_cart("shanchu");
+        // selectIDList = selectIDList.map(({storeID,idlx}={}) => {
+        //     return payShopCart(storeID,idlx);
+        // });
+        //
+        // Promise.all(selectIDList).then(() => {
+        //     let canshu = ["banner","","bigScreen","fitting","list","classify"];
+        //    this.props.queryUnpay(canshu);
+        //     // this.props.queryUnpay("classify");
+        //     this.props.queryPay(canshu);
+        //
+        // });
 
-        Promise.all(selectIDList).then(() => {
-            let canshu = ["banner","","bigScreen","fitting","list","classify"];
-           this.props.queryUnpay(canshu);
+        // this.props.classify_cart("shanchu");
+
+
+        selectIDList.forEach(({storeID,idlx}={},index) => {
+            setTimeout(()=>{
+                payShopCart(storeID,idlx);
+            },40*index);
+        });
+
+        setTimeout( async ()=>{
+            let canshu = ["banner","hotSale","bigScreen","fitting","list","classify"];
+            await this.props.queryUnpay(canshu);
             // this.props.queryUnpay("classify");
-            this.props.queryPay(canshu);
+            await this.props.queryPay(canshu);
 
-        });
+            this.props.classify_cart("shanchu");
+
+        },500);
+
+
+
+
     }
 
 }
