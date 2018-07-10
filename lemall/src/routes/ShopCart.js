@@ -43,12 +43,11 @@ class ShopCart extends React.Component {
                 obj[cur.id+cur.idlx]=1;
             }
         }
-        console.log(obj);
         let newunpay = [];
         for (let attr in obj){
             newunpay.push(
                 unpay.find((item,index)=>{
-                    console.log(parseFloat(item.id),parseFloat(attr),item.idlx,/[a-zA-Z]+/g.exec(attr)[0]);
+
                     if(parseFloat(item.id)===parseFloat(attr)&&item.idlx===/[a-zA-Z]+/g.exec(attr)[0]){
                         item.count = parseInt(obj[attr]);
                         return true;
@@ -56,7 +55,6 @@ class ShopCart extends React.Component {
                  })
             );
         }
-        console.log(newunpay);
         unpay = newunpay;
         return <div className={"shopCartBox"}>
             <div className={this.state.dialog?'dialogShoe':"dialog"}></div>
@@ -69,9 +67,7 @@ class ShopCart extends React.Component {
             {unpay.length===0?<Alert type="warning" description="当前还没有任何课程，快去购买吧"/>:null}
 
             {unpay.map((item,index)=>{
-                console.log(item);
                 let {name,smallpic,price,dec,check,id,idlx,count} = item;
-                console.log(count);
                 if(item.describe){
                     dec = item.describe;
                 }
@@ -136,7 +132,7 @@ class ShopCart extends React.Component {
     }
 
     removeThis= async (id,idlx,index,count,price)=>{
-        console.log(count);
+
         for(let i=0;i<count;i++){
             await this.props.remove({id:id,idlx:idlx});
             let all = [...this.props.select,...this.props.dataBanner,...this.props.dataHot,...this.props.dataBig,...this.props.dataFitting];
@@ -146,12 +142,10 @@ class ShopCart extends React.Component {
             this.props.classify_cart_remove(data);
 
             this.props.removeShop(data);
-            console.log("ds");
         }
     };
 
     minus= async (id,idlx,index,count,price)=>{
-console.log(count);
         if( this.refs["value"+id+idlx].innerHTML<=1)return;
 
         await this.props.remove({id:id,idlx:idlx});
@@ -173,7 +167,6 @@ console.log(count);
             return parseFloat(item.id) === parseFloat(id) && item.idlx === idlx;
         });
         this.props.classify_cart(data);
-        console.log(this.refs["value"+id+idlx]);
         this.refs["value"+id+idlx].innerHTML=parseInt(this.refs["value"+id+idlx].innerHTML)+1;
 
 
@@ -186,7 +179,6 @@ console.log(count);
 
     select=()=>{
         let {count} = this.props.shopCart;
-        console.log(this.state.state);
         let tongbuState=this.state.state==1?0:1;
         this.setState({
             state:this.state.state==1?0:1

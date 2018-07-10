@@ -30,14 +30,12 @@ function detail(state=INIT_STATE,action) {
             break;
         //前台删除
         case TYPES.CLASSIFY_CART_REMOVE:
-            console.log(state.Cart);
             let count=0;
             let one = state.Cart.find((item,index)=>{
                 count = index;
                 return parseFloat(item.id)!==parseFloat(action.data.id)&&item.idlx===action.data.idlx
             });
             state.Cart.splice(count,1);
-            console.log(state.Cart);
             break;
     }
     return state;

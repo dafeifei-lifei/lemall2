@@ -23,9 +23,7 @@ function shopCart(state=INIT_STATE,action) {
                     item.check=true;
                     state.shopCart.unpay.push(item);
                 });
-                console.log(state.shopCart.unpay);
             }else{
-                console.log(action.unPayCart);
                 action.unPayCart.check=true;
                 state.shopCart.unpay.push(action.unPayCart);
             }
@@ -44,10 +42,6 @@ function shopCart(state=INIT_STATE,action) {
         case TYPES.SHOP_PAY:
             if (parseFloat(action.result.code) === 0) {
                 state.shopCart.pay = action.result.data;
-                console.log(state.shopCart.pay);
-                // state.shopCart.unpay = [];
-                // state.Cart=[];
-
             }
             break;
 

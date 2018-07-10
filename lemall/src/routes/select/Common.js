@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import data from '../../calssdata.json'
 import {Input,Icon} from 'antd'
 import SuperTv from './SuperTV'
 import Hardware from './Hardware'
