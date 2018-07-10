@@ -24,10 +24,10 @@ let shopCart={
         }
     } ,
 
-    handleSelect(mode) {
+    handleSelect(mode,idlx) {
         return {
             type: TYPES.HEANLE_SELECT,
-            mode
+            mode,idlx
         }
     },
 

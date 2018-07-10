@@ -1,6 +1,6 @@
 import React from "react"
 import {connect} from "react-redux"
-import {Icon,Alert} from "antd"
+import {Icon,Alert,Button} from "antd"
 import "../static/css/shopCart.less"
 import "../static/css/reset.min.css"
 import action from "../store/action"
@@ -34,29 +34,33 @@ class ShopCart extends React.Component {
 
     render() {
         let {count,state,checkAll,unpay} = this.props.shopCart;
-        let obj = {},cur ;
+        let obj = {},cur={};
         for(let i=0;i<unpay.length;i++){
-            cur = unpay[i].id;
-            if(obj[cur]){
-                obj[cur]++;
+            cur = {id:unpay[i].id,idlx:unpay[i].idlx};
+            if(obj[cur.id+cur.idlx]){
+                obj[cur.id+cur.idlx]++;
             }else{
-                obj[cur]=1;
+                obj[cur.id+cur.idlx]=1;
             }
         }
+        console.log(obj);
         let newunpay = [];
         for (let attr in obj){
             newunpay.push(
                 unpay.find((item,index)=>{
-                    if(item.id==attr){
+                    console.log(parseFloat(item.id),parseFloat(attr),item.idlx,/[a-zA-Z]+/g.exec(attr)[0]);
+                    if(parseFloat(item.id)===parseFloat(attr)&&item.idlx===/[a-zA-Z]+/g.exec(attr)[0]){
                         item.count = parseInt(obj[attr]);
                         return true;
                     }
                  })
             );
         }
+        console.log(newunpay);
         unpay = newunpay;
         return <div className={"shopCartBox"}>
             <div className={this.state.dialog?'dialogShoe':"dialog"}></div>
+
             <div className={"shopHead"}>
                 <Icon type="left" onClick={() => this.props.history.go(-1)}/>
                 <span>购物车</span>
@@ -67,24 +71,28 @@ class ShopCart extends React.Component {
             {unpay.map((item,index)=>{
                 console.log(item);
                 let {name,smallpic,price,dec,check,id,idlx,count} = item;
+                console.log(count);
                 if(item.describe){
                     dec = item.describe;
                 }
                 return <div className={"shopBody"} key={index}>
-                    <div><span>乐视自营</span></div>
                     <div>
+                        <span>乐视自营</span>
+                        <div></div>
+                        <Icon type='close' classNam='close' onClick={this.removeThis.bind(this,id,idlx,index,count,price)}></Icon>
+                    </div>
+                    <div className="content">
                         <div className={"select_check"}>
                             <input type={"checkbox"} id={"ipt"}  checked={check}/>
-                            <label htmlFor={"ipt"} onClick={this.props.handleSelect.bind(this,id)}><Icon type={"check"} /></label>
+                            <label htmlFor={"ipt"} onClick={this.props.handleSelect.bind(this,id,idlx)}><Icon type={"check"} /></label>
                         </div>
                         <div>
                             <a><img
                                 src={smallpic}
                                 alt={dec}/></a>
                             <div className={"shop"}>
+                                <span>{name}</span>
                                 <span>{dec}</span>
-                                <span>(一个月会员)</span>
-                                <span>{name} 55吋</span>
                             </div>
                         </div>
                         <div>
@@ -127,8 +135,23 @@ class ShopCart extends React.Component {
         </div>
     }
 
-    minus= async (id,idlx,index,count,price)=>{
+    removeThis= async (id,idlx,index,count,price)=>{
+        console.log(count);
+        for(let i=0;i<count;i++){
+            await this.props.remove({id:id,idlx:idlx});
+            let all = [...this.props.select,...this.props.dataBanner,...this.props.dataHot,...this.props.dataBig,...this.props.dataFitting];
+            let data = all.find((item) => {
+                return parseFloat(item.id) === parseFloat(id) && item.idlx === idlx;
+            });
+            this.props.classify_cart_remove(data);
 
+            this.props.removeShop(data);
+            console.log("ds");
+        }
+    };
+
+    minus= async (id,idlx,index,count,price)=>{
+console.log(count);
         if( this.refs["value"+id+idlx].innerHTML<=1)return;
 
         await this.props.remove({id:id,idlx:idlx});

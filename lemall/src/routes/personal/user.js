@@ -23,11 +23,9 @@ class User extends React.Component {
             return;
         }
         await this.props.checkLogin();
-        let canshu = ["banner", "hotSale", "bigScreen", "fitting", "list", "classify"],Cart;
+        let canshu = ["banner", "hotSale", "bigScreen", "fitting", "list", "classify"];
         if(this.props.isLogin){
             await this.props.getUserData();
-            Cart = this.props.Cart;
-            this.props.saveUnpay(Cart);
             await this.props.queryUnpay(canshu);
             await this.props.queryPay(canshu);
         }

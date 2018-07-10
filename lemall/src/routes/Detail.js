@@ -46,7 +46,7 @@ class Detail extends React.Component {
 
     componentWillMount() {
         document.documentElement.scrollTop = 0;
-        window.onscroll = () => {
+            window.onscroll = () => {
             let scrollT = document.documentElement.scrollTop;
             if (scrollT > 1220) {
                 this.setState({

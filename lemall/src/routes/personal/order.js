@@ -24,13 +24,7 @@ class Order extends React.Component {
     }
     render() {
         let {shopCart: {unpay, pay}} = this.props;
-
-        if(this.props.saveUnpay.length!==0){
-            unpay.concat(this.props.saveUnpay);
-
-        }
         let ary = [pay, unpay, pay, []];
-        console.log(unpay, pay);
         return <div className="orderBox">
             <div className="title">
                 <Link to="/personal/user"><i></i></Link>
@@ -110,4 +104,4 @@ class Order extends React.Component {
     }
 }
 
-export default connect(state => ({...state.shopCart}), action.shopCart)(Order);
+export default connect(state => ({...state.shopCart,...state.personal}), action.shopCart)(Order);

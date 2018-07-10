@@ -84,6 +84,7 @@ class Register extends React.Component{
             return;
         }
             passwordValue=md5(passwordValue);
+        console.log(nameValue, passwordValue, phoneValue, emailValue);
         await this.props.register({name:nameValue,password:passwordValue,phone:phoneValue,email:emailValue});
         name.value=email.value=phone.value=password.value="";
         if(this.props.isRegister){

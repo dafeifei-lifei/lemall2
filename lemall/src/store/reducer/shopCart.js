@@ -25,6 +25,7 @@ function shopCart(state=INIT_STATE,action) {
                 });
                 console.log(state.shopCart.unpay);
             }else{
+                console.log(action.unPayCart);
                 action.unPayCart.check=true;
                 state.shopCart.unpay.push(action.unPayCart);
             }
@@ -53,6 +54,7 @@ function shopCart(state=INIT_STATE,action) {
         //=>操作全选等
         case TYPES.HEANLE_SELECT:
             let mode = action.mode;
+            let idlx = action.idlx;
             if (mode === 'all') {
                 state.selectAll = !state.selectAll;
                 state.shopCart.unpay = state.shopCart.unpay.map(item => {
@@ -60,13 +62,12 @@ function shopCart(state=INIT_STATE,action) {
                 });
             } else {
                 let item = state.shopCart.unpay.find(item => {
-                    return parseFloat(item.id) === parseFloat(mode);
+                    return parseFloat(item.id) === parseFloat(mode)&&item.idlx==idlx;
                 });
 
 
                 if(!item){
-                    item={};
-
+                   return ;//
                 }
                 item.check = !item.check;
                 //=>注意:验证是否所有的课程都是选中的，如果是全选也要选中
