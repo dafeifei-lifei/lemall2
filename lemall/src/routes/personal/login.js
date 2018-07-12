@@ -32,7 +32,7 @@ class Login extends React.Component {
             <div className="loginMessage" onBlur={this.checking}>
                 <div className="userName">
                     <Icon type="user"></Icon>
-                    <input type="text" placeholder="邮箱/电话" ref="userName"/>
+                    <input type="text" placeholder="邮箱/电话/用户名" ref="userName"/>
                 </div>
                 <div className="userPassword">
                     <Icon type="lock"></Icon>
@@ -113,33 +113,20 @@ class Login extends React.Component {
     checking = (ev) => {
         let target = ev.target,
             reg = /^((\d{11})|(\w+((-\w+)|(.\w+))@[A-Za-z0-9)]+([-.][A-Za-z0-9]+)*(\.[A-Za-z0-9]+)))$/i;
-        if (target.parentNode.className === "userName") {
-            if (!reg.test(target.value) && target.value) {
+
+        if (!/^\w{8}$/i.test(target.value) && target.value) {
+            this.setState({
+                isShow: !this.state.isShow,
+                tip: "请输入8位密码！"
+            });
+            target.value = "";
+            setTimeout(() => {
                 this.setState({
-                    isShow: !this.state.isShow,
-                    tip: "请输入正确的用户名！"
+                    isShow: !this.state.isShow
                 });
-                target.value = "";
-                setTimeout(() => {
-                    this.setState({
-                        isShow: !this.state.isShow
-                    });
-                }, 2000);
-            }
-        } else {
-            if (!/^\w{8}$/i.test(target.value) && target.value) {
-                this.setState({
-                    isShow: !this.state.isShow,
-                    tip: "请输入8位密码！"
-                });
-                target.value = "";
-                setTimeout(() => {
-                    this.setState({
-                        isShow: !this.state.isShow
-                    });
-                }, 2000);
-            }
+            }, 2000);
         }
+
     }
 }
 
