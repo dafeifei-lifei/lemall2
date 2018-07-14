@@ -190,7 +190,7 @@ class ShopCart extends React.Component {
         //=>验证当前是否登录
         let result = await checkLogin();
         if (parseFloat(result.code) !== 0) {
-            alert('请先登录');
+            this.props.history.push("/personal/login");
             return;
         }
 
